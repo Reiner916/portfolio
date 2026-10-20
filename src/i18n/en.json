@@ -1,0 +1,162 @@
+{
+  "preloader": {
+    "loading": "Loading portfolio",
+    "label": "Portfolio · 2026"
+  },
+  "nav": {
+    "skipIntro": "Skip intro"
+  },
+  "intro": {
+    "hello": "Hi, I'm",
+    "name": "Amir Chouchane",
+    "role": "Work-study · Development & IT Support",
+    "status": "Looking for a work-study position · 2 days / 3 days",
+    "hintDown": "Scroll down to enter the screen",
+    "hintUp": "Or scroll up to see the whole desk"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Welcome to the other side of the screen.",
+    "text": "My name is Amir. Passionate about IT, I switched to this field after a first year of a business degree, and I'm now studying for a BTS SIO (IT services) at CFA ITIS in Évry-Courcouronnes. In my free time, I build websites with Next.js and React, and I write scripts to automate repetitive tasks. I enjoy field work just as much: upgrading, installing, configuring and troubleshooting workstations. And above all, helping others, whether they are users or people close to me.",
+    "status": "Available for a work-study position",
+    "rhythm": {
+      "label": "Work-study schedule",
+      "title": "3 days at the company, 2 days at school",
+      "detail": "Wednesday alternates from one week to the next.",
+      "week": "Week",
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "company": "Company",
+      "school": "School"
+    },
+    "training": {
+      "label": "Education",
+      "title": "BTS SIO",
+      "detail": "CFA ITIS, Évry-Courcouronnes",
+      "since": "Since September 2026"
+    },
+    "mobility": {
+      "label": "Location",
+      "title": "Savigny-sur-Orge (91), France",
+      "detail": "Driving licence and own car · available across Paris and the surrounding area"
+    },
+    "languages": {
+      "label": "Languages",
+      "english": "English",
+      "spanish": "Spanish",
+      "englishTag": "Advanced",
+      "spanishTag": "Intermediate"
+    }
+  },
+  "skills": {
+    "eyebrow": "Skills",
+    "title": "What I can do.",
+    "intro": "My level in each technology, honestly rated out of 5.",
+    "groups": {
+      "support": "Support & hardware",
+      "dev": "Development",
+      "learning": "Currently learning · BTS SIO"
+    },
+    "levels": [
+      "Discovery",
+      "Basics",
+      "Intermediate",
+      "Proficient",
+      "Expert"
+    ],
+    "project": "project",
+    "projects": "projects",
+    "learningTag": "In progress",
+    "items": {
+      "windows": {
+        "name": "Windows workstations",
+        "detail": "Installing, configuring, troubleshooting, preparing and deploying new workstations."
+      },
+      "hardware": {
+        "name": "PC building & upgrades",
+        "detail": "Building PCs, adding RAM, installing NVMe SSDs."
+      },
+      "helpdesk": {
+        "name": "User support",
+        "detail": "Ticket tracking, diagnosis and resolution, for a community of 500 users."
+      },
+      "remote": {
+        "name": "Remote assistance",
+        "detail": "Remote control with TeamViewer and Parsec."
+      },
+      "office": {
+        "name": "Microsoft 365 & Google Workspace",
+        "detail": "Outlook, Teams, Google collaboration tools."
+      },
+      "nextjs": {
+        "name": "Next.js / React",
+        "detail": "A complete website designed and built on my own: categories, internal search, usability."
+      },
+      "htmlcss": {
+        "name": "HTML / CSS",
+        "detail": "The fundamentals of web integration."
+      },
+      "scripts": {
+        "name": "Automation scripts",
+        "detail": "Automating repetitive everyday tasks."
+      },
+      "sql": {
+        "name": "SQL & databases",
+        "detail": "Simple queries and database structure."
+      }
+    },
+    "learning": [
+      "Networking & Wi-Fi",
+      "IP telephony",
+      "Linux",
+      "Cybersecurity",
+      "Managed IT services"
+    ]
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "What I've built.",
+    "featured": "Featured project",
+    "demo": "Visit the site",
+    "github": "Code on GitHub",
+    "soon": "Link coming soon",
+    "stack": "Stack",
+    "items": {
+      "directory": {
+        "title": "Referral code directory",
+        "summary": "My personal website, designed and built on my own from scratch: a directory of referral codes for banks, neobanks and crypto platforms, organised by category and searchable through an internal search engine. I added an admin area to manage the content without touching the code.",
+        "points": [
+          "Instant search and category navigation",
+          "Secure admin area: add, edit and reorder offers, upload logos",
+          "Stats: how many times each code is copied",
+          "SEO: sitemap and generated share preview images"
+        ]
+      },
+      "cleaner": {
+        "title": "Temporary files cleanup script",
+        "summary": "A Batch script that clears Windows temporary files in a double-click. It asks for confirmation before deleting anything.",
+        "points": [
+          "Cleans 3 locations: %TEMP%, Windows\\Temp and Prefetch",
+          "Confirmation before deleting",
+          "Runs with a double-click"
+        ]
+      }
+    },
+    "mock": {
+      "search": "Search a brand…",
+      "categories": [
+        "All",
+        "Banking",
+        "Shopping",
+        "Energy",
+        "Mobile"
+      ]
+    },
+    "shot": "Website screenshot"
+  }
+}

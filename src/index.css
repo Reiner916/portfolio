@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* Palettes : la palette active est choisie par l'attribut data-palette sur <html>. */
+:root,
+[data-palette="lagon"] {
+  --c-bg: #0a1014;
+  --c-surface: #111c21;
+  --c-accent: #2dd4bf;
+  --c-accent-2: #38bdf8;
+  --c-fg: #e6f2f3;
+  --c-muted: #7f969c;
+}
+
+[data-palette="indigo"] {
+  --c-bg: #0b0b12;
+  --c-surface: #15151f;
+  --c-accent: #7c6cff;
+  --c-accent-2: #c084fc;
+  --c-fg: #ededf5;
+  --c-muted: #8b8ba3;
+}
+
+[data-palette="ambre"] {
+  --c-bg: #101010;
+  --c-surface: #1a1a1a;
+  --c-accent: #f5a524;
+  --c-accent-2: #ff6b4a;
+  --c-fg: #f2f0eb;
+  --c-muted: #9a968e;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-accent: var(--c-accent);
+  --color-accent-2: var(--c-accent-2);
+  --color-fg: var(--c-fg);
+  --color-muted: var(--c-muted);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--c-accent) 35%, transparent);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80%,
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(0);
+  }
+  60%,
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes hint-bounce {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

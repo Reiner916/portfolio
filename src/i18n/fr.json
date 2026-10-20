@@ -1,0 +1,162 @@
+{
+  "preloader": {
+    "loading": "Chargement du portfolio",
+    "label": "Portfolio · 2026"
+  },
+  "nav": {
+    "skipIntro": "Passer l'intro"
+  },
+  "intro": {
+    "hello": "Bonjour, je suis",
+    "name": "Amir Chouchane",
+    "role": "Alternance · Développement & Support IT",
+    "status": "Recherche une alternance · rythme 2 j / 3 j",
+    "hintDown": "Fais défiler vers le bas pour entrer dans l'écran",
+    "hintUp": "Ou remonte pour découvrir tout le bureau"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Bienvenue de l'autre côté de l'écran.",
+    "text": "Je m'appelle Amir. Passionné d'informatique, je me suis réorienté vers ce domaine après une première année de BTS commercial, et je suis aujourd'hui en BTS SIO au CFA ITIS d'Évry-Courcouronnes. Sur mon temps libre, je crée des sites en Next.js et React, et j'écris des scripts pour automatiser les tâches répétitives. J'aime tout autant le terrain : upgrader, installer, configurer et dépanner des postes. Et surtout, aider les autres, qu'il s'agisse d'utilisateurs ou de proches.",
+    "status": "Disponible pour une alternance",
+    "rhythm": {
+      "label": "Rythme d'alternance",
+      "title": "3 jours en entreprise, 2 jours à l'école",
+      "detail": "Le mercredi alterne d'une semaine à l'autre.",
+      "week": "Semaine",
+      "days": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Jeu",
+        "Ven"
+      ],
+      "company": "Entreprise",
+      "school": "École"
+    },
+    "training": {
+      "label": "Formation",
+      "title": "BTS SIO",
+      "detail": "CFA ITIS, Évry-Courcouronnes",
+      "since": "Depuis septembre 2026"
+    },
+    "mobility": {
+      "label": "Mobilité",
+      "title": "Savigny-sur-Orge (91)",
+      "detail": "Permis B et véhiculé · mobile sur Paris et sa périphérie"
+    },
+    "languages": {
+      "label": "Langues",
+      "english": "Anglais",
+      "spanish": "Espagnol",
+      "englishTag": "Avancé",
+      "spanishTag": "Intermédiaire"
+    }
+  },
+  "skills": {
+    "eyebrow": "Compétences",
+    "title": "Ce que je sais faire.",
+    "intro": "Mon niveau sur chaque techno, noté honnêtement sur 5.",
+    "groups": {
+      "support": "Support & matériel",
+      "dev": "Développement",
+      "learning": "En cours d'apprentissage · BTS SIO"
+    },
+    "levels": [
+      "Découverte",
+      "Notions",
+      "Intermédiaire",
+      "Confirmé",
+      "Expert"
+    ],
+    "project": "projet",
+    "projects": "projets",
+    "learningTag": "En cours",
+    "items": {
+      "windows": {
+        "name": "Postes Windows",
+        "detail": "Installation, configuration, dépannage, préparation et déploiement de nouveaux postes."
+      },
+      "hardware": {
+        "name": "Montage & upgrade",
+        "detail": "Montage de PC, ajout de RAM, installation de SSD NVMe."
+      },
+      "helpdesk": {
+        "name": "Support utilisateurs",
+        "detail": "Suivi de tickets, diagnostic et résolution, sur une communauté de 500 utilisateurs."
+      },
+      "remote": {
+        "name": "Assistance à distance",
+        "detail": "Prise en main à distance avec TeamViewer et Parsec."
+      },
+      "office": {
+        "name": "Microsoft 365 & Google Workspace",
+        "detail": "Outlook, Teams, outils collaboratifs Google."
+      },
+      "nextjs": {
+        "name": "Next.js / React",
+        "detail": "Un site complet conçu et développé seul : catégories, recherche interne, ergonomie."
+      },
+      "htmlcss": {
+        "name": "HTML / CSS",
+        "detail": "Les bases de l'intégration web."
+      },
+      "scripts": {
+        "name": "Scripts d'automatisation",
+        "detail": "Automatiser les tâches répétitives du quotidien."
+      },
+      "sql": {
+        "name": "SQL & bases de données",
+        "detail": "Requêtes simples et structure d'une base."
+      }
+    },
+    "learning": [
+      "Réseaux & Wi-Fi",
+      "Téléphonie IP",
+      "Linux",
+      "Cybersécurité",
+      "Infogérance"
+    ]
+  },
+  "projects": {
+    "eyebrow": "Projets",
+    "title": "Ce que j'ai construit.",
+    "featured": "Projet phare",
+    "demo": "Voir le site",
+    "github": "Code sur GitHub",
+    "soon": "Lien bientôt disponible",
+    "stack": "Technos",
+    "items": {
+      "directory": {
+        "title": "Annuaire de codes de parrainage",
+        "summary": "Mon site personnel, conçu et développé seul de A à Z : un annuaire de codes de parrainage pour les banques, néobanques et plateformes crypto, classés par catégories et accessibles via un moteur de recherche interne. J'y ai ajouté un espace d'administration pour gérer le contenu sans toucher au code.",
+        "points": [
+          "Recherche instantanée et navigation par catégories",
+          "Espace admin sécurisé : ajout, modification, réorganisation des offres et upload de logos",
+          "Statistiques : nombre de copies de chaque code",
+          "SEO : plan du site et images d'aperçu générées pour le partage"
+        ]
+      },
+      "cleaner": {
+        "title": "Script de nettoyage des fichiers temporaires",
+        "summary": "Un script Batch qui vide en un double-clic les fichiers temporaires de Windows. Il demande une confirmation avant de supprimer quoi que ce soit.",
+        "points": [
+          "Nettoie 3 emplacements : %TEMP%, Windows\\Temp et Prefetch",
+          "Confirmation avant suppression",
+          "Lancement en un double-clic"
+        ]
+      }
+    },
+    "mock": {
+      "search": "Rechercher une marque…",
+      "categories": [
+        "Tout",
+        "Banque",
+        "Shopping",
+        "Énergie",
+        "Mobile"
+      ]
+    },
+    "shot": "Capture du site"
+  }
+}
