@@ -67,15 +67,15 @@ export function HorizontalWords() {
 
   return (
     <section ref={sectionRef} aria-label={words} className="relative z-10 h-screen overflow-hidden">
-      <div ref={rowRef} className="absolute top-1/2 flex items-center px-[25vw] whitespace-nowrap">
+      <div ref={rowRef} className={prefersReducedMotion ? 'flex h-full items-center px-5 sm:px-8' : 'absolute top-1/2 flex items-center px-[25vw] whitespace-nowrap'}>
         <div className="relative">
           {/* Flèche dessinée au-dessus du début de la phrase */}
-          <svg viewBox="0 0 380 130" fill="none" className="absolute bottom-full left-0 w-[22vw] -translate-y-[10%] text-accent" aria-hidden>
+          <svg viewBox="0 0 380 130" fill="none" className={`absolute bottom-full left-0 w-[22vw] -translate-y-[10%] text-accent ${prefersReducedMotion ? 'hidden' : ''}`} aria-hidden>
             <path data-draw d="M4 120C30 40 110 10 170 40s40 90-10 80-30-90 60-100 140 40 150 90" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
             <path data-draw d="M374 130l-6-24-20 14" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
 
-          <h2 className="relative z-[2] font-display text-[9vw] leading-none font-bold tracking-tight text-fg lowercase" aria-hidden>
+          <h2 className={`relative z-[2] font-display leading-none font-bold tracking-tight text-fg lowercase ${prefersReducedMotion ? 'text-[11vw] whitespace-normal' : 'text-[9vw]'}`} aria-hidden>
             {[...words].map((char, i) => (
               <span key={i} data-letter className="inline-block whitespace-pre">
                 {char}
@@ -94,7 +94,7 @@ export function HorizontalWords() {
             <KeySticker />
           </Sticker>
 
-          <svg viewBox="0 0 140 127" fill="none" className="absolute top-1/2 left-full w-[8.4em] translate-x-1/2 text-accent-2" aria-hidden>
+          <svg viewBox="0 0 140 127" fill="none" className={`absolute top-1/2 left-full w-[8.4em] translate-x-1/2 text-accent-2 ${prefersReducedMotion ? 'hidden' : ''}`} aria-hidden>
             <path data-draw d="M2 2c98 0 128 50 116 123" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
             <path data-draw d="M100 108l18 17 20-15" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -107,7 +107,7 @@ export function HorizontalWords() {
 
 function Sticker({ className, children }: { className: string; children: ReactNode }) {
   return (
-    <div className={`absolute z-10 ${className}`} aria-hidden>
+    <div className={`absolute z-10 ${prefersReducedMotion ? 'hidden' : ''} ${className}`} aria-hidden>
       <div data-sticker>{children}</div>
     </div>
   )

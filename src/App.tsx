@@ -1,4 +1,5 @@
 import { AnimatedBackground } from './components/AnimatedBackground'
+import { SkipLink } from './components/SkipLink'
 import { CustomCursor } from './components/CustomCursor'
 import { Intro } from './components/intro/Intro'
 import { Nav } from './components/Nav'
@@ -14,6 +15,7 @@ import { Skills } from './sections/Skills'
 export default function App() {
   return (
     <>
+      <SkipLink />
       <Preloader />
       <CustomCursor />
       <AnimatedBackground />

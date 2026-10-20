@@ -1,8 +1,22 @@
+import { useLayoutEffect, useRef } from 'react'
 import { useI18n } from '../i18n/I18nProvider'
-import { lenis } from '../lib/motion'
+import { gsap, lenis, ScrollTrigger } from '../lib/motion'
 
 export function Nav() {
   const { t } = useI18n()
+  const skipRef = useRef<HTMLButtonElement>(null)
+
+  // "Passer l'intro" n'a plus de sens une fois l'intro passée : il disparaît (et revient si on remonte)
+  useLayoutEffect(() => {
+    const show = (visible: boolean) => gsap.to(skipRef.current, { autoAlpha: visible ? 1 : 0, y: visible ? 0 : -10, duration: 0.3, ease: 'power2.out' })
+    const st = ScrollTrigger.create({
+      trigger: '#about',
+      start: 'top 85%',
+      onEnter: () => show(false),
+      onLeaveBack: () => show(true),
+    })
+    return () => st.kill()
+  }, [])
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-4 sm:px-8">
@@ -11,6 +25,7 @@ export function Nav() {
       </a>
       <div className="flex items-center gap-2">
       <button
+        ref={skipRef}
         type="button"
         onClick={() => lenis.scrollTo('#about', { duration: 2.2 })}
         data-bubble={t('cursor.go')}

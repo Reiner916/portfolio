@@ -30,7 +30,7 @@ export function About() {
 
   return (
     // Remonte sous la fin de la plongée : le titre arrive dès que l'écran remplit le cadre
-    <section ref={rootRef} id="about" className="relative z-10 mx-auto -mt-[60svh] max-w-6xl px-5 pt-24 pb-32 sm:px-8">
+    <section ref={rootRef} id="about" tabIndex={-1} className="outline-none relative z-10 mx-auto -mt-[60svh] max-w-6xl px-5 pt-24 pb-32 sm:px-8">
       <SectionTitle eyebrow={t('about.eyebrow')} title={t('about.title')} className="max-w-4xl" />
       <span className="mt-10 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
         <span className="relative flex size-2">

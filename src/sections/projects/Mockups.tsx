@@ -156,7 +156,7 @@ export function Screenshots({ shots, alt }: { shots: { night: string; day?: stri
         </div>
       </BrowserFrame>
       {shots.extra && (
-        <div data-shot-overlay className="absolute right-0 bottom-0 w-[58%] -rotate-2">
+        <div data-shot-overlay className="absolute right-2 bottom-0 w-[58%] -rotate-2 sm:right-0">
           <BrowserFrame>
             <img src={shots.extra} alt={alt} loading="lazy" width={1600} height={900} className="block aspect-video w-full object-cover" />
           </BrowserFrame>

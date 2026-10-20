@@ -4,7 +4,8 @@
     "label": "Portfolio · 2026"
   },
   "nav": {
-    "skipIntro": "Passer l'intro"
+    "skipIntro": "Passer l'intro",
+    "skipContent": "Aller au contenu"
   },
   "intro": {
     "hello": "Bonjour, je suis",
