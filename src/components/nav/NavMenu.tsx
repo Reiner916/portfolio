@@ -4,7 +4,7 @@ import { useI18n } from '../../i18n/I18nProvider'
 import { gsap, lenis, prefersReducedMotion } from '../../lib/motion'
 import { goTo, LangSwitch, NAV_SECTIONS, useActiveSection } from './shared'
 
-// Option C : bouton "Menu" qui ouvre un rideau plein écran avec de grands liens numérotés.
+// Menu mobile : bouton "Menu" qui ouvre un rideau plein écran avec de grands liens numérotés.
 // Le rideau descend (clip-path, 0.8 s "expo.inOut"), puis les liens montent un à un (masques, "power4.out").
 export function NavMenu({ showName = true, className = '' }: { showName?: boolean; className?: string }) {
   const { t } = useI18n()

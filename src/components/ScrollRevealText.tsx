@@ -29,8 +29,10 @@ export function ScrollRevealText({ text, className = '' }: { text: string; class
     return () => split.revert()
   }, [text])
 
+  // key={text} : le paragraphe est recréé quand le texte change (changement de langue),
+  // sinon SplitText restaurerait l'ancien texte en se retirant
   return (
-    <p ref={ref} className={className}>
+    <p key={text} ref={ref} className={className}>
       {text}
     </p>
   )

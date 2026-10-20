@@ -4,8 +4,8 @@ import { gsap } from '../../lib/motion'
 import { NavMenu } from './NavMenu'
 import { goTo, LangSwitch, NAV_SECTIONS, useActiveSection } from './shared'
 
-// Option A : barre flottante en haut ; une pastille turquoise glisse sous la section en cours.
-// Sur mobile, elle laisse la place au bouton "Menu" (option C).
+// Menu principal : barre flottante en haut ; une pastille turquoise glisse sous la section en cours.
+// Sur mobile, elle laisse la place au bouton "Menu" et à son rideau plein écran (NavMenu).
 export function NavBar() {
   const { t, lang } = useI18n()
   const active = useActiveSection()

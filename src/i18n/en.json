@@ -4,7 +4,6 @@
     "label": "Portfolio · 2026"
   },
   "nav": {
-    "skipIntro": "Skip intro",
     "skipContent": "Skip to content",
     "menu": "Menu",
     "close": "Close",
@@ -176,7 +175,6 @@
   "cursor": {
     "home": "back to top",
     "github": "see the code",
-    "go": "let's go!",
     "drag": "drag",
     "mail": "write to me",
     "call": "call me",
