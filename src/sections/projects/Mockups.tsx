@@ -120,18 +120,45 @@ export function DirectoryMock() {
   )
 }
 
-// Vraies captures : la 1re dans une fenêtre de navigateur, la 2e en superposition décalée
-export function Screenshots({ images, alt }: { images: string[]; alt: string }) {
-  const [main, second] = images
+// Vraies captures : la page en mode nuit, le mode jour révélé par un balayage, et une 2e page en superposition
+export function Screenshots({ shots, alt }: { shots: { night: string; day?: string; extra?: string }; alt: string }) {
+  const { t } = useI18n()
   return (
-    <div className="relative pb-[18%] sm:pr-[10%]">
+    <div className="relative pb-[16%] sm:pr-[8%]">
       <BrowserFrame>
-        <img src={main} alt={alt} loading="lazy" width={1600} height={900} className="block aspect-video w-full object-cover" />
+        <div className="relative aspect-video overflow-hidden">
+          <img src={shots.night} alt={alt} loading="lazy" width={1600} height={900} className="absolute inset-0 size-full object-cover" />
+          {shots.day && (
+            <>
+              <img
+                data-day
+                src={shots.day}
+                alt=""
+                loading="lazy"
+                width={1600}
+                height={900}
+                className="absolute inset-0 size-full object-cover"
+                style={{ clipPath: 'inset(0 0 0 100%)' }}
+              />
+              {/* Ligne de balayage avec le bouton jour / nuit */}
+              <div data-wipe className="pointer-events-none absolute inset-y-0 w-px bg-white/90 opacity-0" style={{ left: '100%' }}>
+                <span className="absolute top-1/2 left-1/2 grid size-9 -translate-1/2 place-items-center rounded-full bg-white text-[#0a1014] shadow-lg">
+                  <svg viewBox="0 0 24 24" className="size-5" aria-hidden>
+                    <circle cx="12" cy="12" r="4" fill="currentColor" />
+                    <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </span>
+              </div>
+              <span className="absolute top-3 left-3 rounded-full bg-black/60 px-2.5 py-1 font-mono text-[10px] text-white backdrop-blur">{t('projects.night')}</span>
+              <span className="absolute top-3 right-3 rounded-full bg-white/80 px-2.5 py-1 font-mono text-[10px] text-[#0a1014] backdrop-blur">{t('projects.day')}</span>
+            </>
+          )}
+        </div>
       </BrowserFrame>
-      {second && (
-        <div data-shot-overlay className="absolute right-0 bottom-0 w-[62%] -rotate-2">
+      {shots.extra && (
+        <div data-shot-overlay className="absolute right-0 bottom-0 w-[58%] -rotate-2">
           <BrowserFrame>
-            <img src={second} alt={alt} loading="lazy" width={1600} height={900} className="block aspect-video w-full object-cover" />
+            <img src={shots.extra} alt={alt} loading="lazy" width={1600} height={900} className="block aspect-video w-full object-cover" />
           </BrowserFrame>
         </div>
       )}

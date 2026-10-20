@@ -48,6 +48,65 @@ html {
   color: var(--c-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/* Curseurs (mécanique Truus : body = défaut "2 0", liens = "12 12", textes = "12 12") */
+@media (pointer: fine) {
+  body {
+    cursor: url("/cursors/default.svg") 2 0, auto;
+  }
+  a,
+  button,
+  [role="button"],
+  [data-bubble] {
+    cursor: url("/cursors/pointer.svg") 12 12, pointer;
+  }
+  p,
+  h1,
+  h2,
+  h3,
+  dd,
+  li {
+    cursor: url("/cursors/text.svg") 12 12, auto;
+  }
+  a *,
+  button * {
+    cursor: inherit;
+  }
+}
+
+/* Bulle qui suit le curseur (styles Truus, couleurs Lagon) */
+.cursor-bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-color: var(--c-accent);
+  color: var(--c-bg);
+  padding: 5px 9px 3px;
+  border-radius: 50px 50px 50px 0;
+  font-size: 18px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: left center;
+  z-index: 10000;
+  white-space: nowrap;
+}
+
+/* Lignes du texte qui s'éclaire (Capsule) : ligne de base atténuée + copie claire masquée */
+.reveal-line {
+  position: relative;
+  color: color-mix(in oklab, var(--c-fg) 22%, transparent);
+}
+.reveal-clip {
+  position: absolute;
+  inset: 0;
+  color: var(--c-fg);
+  clip-path: inset(0 0 100%);
+  white-space: nowrap;
 }
 
 ::selection {
@@ -108,11 +167,10 @@ html {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
+/* Animations réduites (réglage système ou bouton de la nav, voir lib/motionPreference.ts) */
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
 }

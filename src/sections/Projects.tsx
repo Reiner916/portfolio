@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import { projects, type Project } from '../data/projects'
+import { SectionTitle } from '../components/SectionTitle'
 import { useI18n } from '../i18n/I18nProvider'
 import { gsap, prefersReducedMotion } from '../lib/motion'
 import { DirectoryMock, Screenshots, TerminalMock } from './projects/Mockups'
@@ -11,31 +12,56 @@ export function Projects() {
   useLayoutEffect(() => {
     if (prefersReducedMotion) return
     const ctx = gsap.context(() => {
-      gsap.from('[data-projects-title]', {
-        yPercent: 110,
-        duration: 1.1,
-        ease: 'expo.out',
-        scrollTrigger: { trigger: '[data-projects-title]', start: 'top 90%' },
-      })
+      gsap.utils.toArray<HTMLElement>('[data-project]').forEach((row) => {
+        const visual = row.querySelector<HTMLElement>('[data-visual]')!
 
-      gsap.utils.toArray<HTMLElement>('[data-project]').forEach((row, i) => {
-        const side = i % 2 === 0 ? 1 : -1
-        const visual = row.querySelector('[data-visual]')
-
-        // Le visuel est piloté par le scroll : il arrive incliné, se redresse au centre, puis repart en s'inclinant
-        gsap
-          .timeline({ scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: 1 } })
-          .fromTo(
-            visual,
-            { rotationX: 30, rotationY: -18 * side, scale: 0.82, y: 120, transformPerspective: 1200 },
-            { rotationX: 0, rotationY: 0, scale: 1, y: 0, ease: 'power2.out', duration: 1 },
-          )
-          .to(visual, { rotationX: -10, scale: 0.94, y: -60, ease: 'power1.in', duration: 1 })
+        // Rotation au scroll — code et valeurs de Codrops (Rotating On-Scroll Animations, démo 1) :
+        // orientation de départ aléatoire (rotationX 70→120, rotationY/Z ±20), arrivée à l'opposé,
+        // scrub, de "top bottom+=20%" à "bottom top-=20%", et une profondeur z = sin(progression·π)·-50
+        const rotationX = gsap.utils.random(70, 120)
+        const rotationY = gsap.utils.random(-20, 20)
+        const rotationZ = gsap.utils.random(-20, 20)
+        const setZ = gsap.quickSetter(visual, 'z', 'px')
+        gsap.fromTo(
+          visual,
+          { rotationX, rotationY, rotationZ },
+          {
+            rotationX: -rotationX,
+            rotationY: -rotationY,
+            rotationZ: -rotationZ,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: visual,
+              start: 'top bottom+=20%',
+              end: 'bottom top-=20%',
+              scrub: true,
+              invalidateOnRefresh: true,
+              onUpdate: (self) => setZ(Math.sin(self.progress * Math.PI) * -50),
+            },
+          },
+        )
 
         // 2e capture : elle glisse plus vite que la 1re (profondeur)
         const overlay = row.querySelector('[data-shot-overlay]')
         if (overlay) {
           gsap.fromTo(overlay, { y: 140 }, { y: -40, ease: 'none', scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: 1 } })
+        }
+
+        // Balayage nuit → jour sur la capture principale, piloté par le scroll
+        const day = row.querySelector<HTMLElement>('[data-day]')
+        const line = row.querySelector<HTMLElement>('[data-wipe]')
+        if (day && line) {
+          const wipe = { x: 100 }
+          gsap.to(wipe, {
+            x: 0,
+            ease: 'power1.inOut',
+            scrollTrigger: { trigger: row, start: 'top 45%', end: 'bottom 55%', scrub: 1 },
+            onUpdate: () => {
+              day.style.clipPath = `inset(0 0 0 ${wipe.x}%)`
+              line.style.left = `${wipe.x}%`
+              line.style.opacity = wipe.x > 99 || wipe.x < 1 ? '0' : '1'
+            },
+          })
         }
 
         // Texte : apparition en cascade
@@ -48,20 +74,29 @@ export function Projects() {
           scrollTrigger: { trigger: row, start: 'top 75%' },
         })
       })
+      // Texte géant qui traverse l'écran pendant la section (Codrops ".mark") : x 100vw → -100 %, scrub
+      gsap.fromTo(
+        '[data-mark]',
+        { x: '100vw' },
+        { x: '-100%', ease: 'none', scrollTrigger: { trigger: rootRef.current, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true } },
+      )
     }, rootRef)
     return () => ctx.revert()
   }, [t])
 
   return (
     <section ref={rootRef} id="projects" className="relative z-10 mx-auto max-w-6xl px-5 py-32 sm:px-8">
-      <p className="mb-6 font-mono text-sm text-accent">// {t('projects.eyebrow')}</p>
-      <h2 className="overflow-hidden pb-1 font-display text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl">
-        <span data-projects-title className="inline-block">
-          {t('projects.title')}
-        </span>
-      </h2>
+      <SectionTitle eyebrow={t('projects.eyebrow')} title={t('projects.title')} />
 
-      <div className="mt-24 flex flex-col gap-32 sm:gap-40">
+      {/* Défilé géant en arrière-plan (fixe pendant la section, comme chez Codrops) */}
+      <div aria-hidden className="pointer-events-none sticky top-1/2 z-0 -mb-[1em] h-0 overflow-visible">
+        <div data-mark className="flex w-max -translate-y-1/2 gap-12 font-display text-[18vw] leading-none font-bold whitespace-nowrap text-transparent uppercase [-webkit-text-stroke:1px_color-mix(in_oklab,var(--c-accent)_35%,transparent)]">
+          <span>{t('projects.eyebrow')}</span>
+          <span>{t('projects.eyebrow')}</span>
+        </div>
+      </div>
+
+      <div className="relative z-10 mt-24 flex flex-col gap-32 sm:gap-40">
         {projects.map((project, i) => (
           <ProjectRow key={project.key} project={project} index={i} />
         ))}
@@ -117,30 +152,34 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 
         <div data-reveal className="mt-8 flex flex-wrap items-center gap-3">
           {project.demo && <LinkButton href={project.demo} primary label={t('projects.demo')} />}
-          {project.github && <LinkButton href={project.github} label={t('projects.github')} />}
+          {project.github && <LinkButton href={project.github} label={t('projects.github')} bubble={t('cursor.github')} />}
           {!project.demo && !project.github && <span className="font-mono text-xs text-muted">{t('projects.soon')}</span>}
         </div>
       </div>
 
-      <div data-visual className={`will-change-transform ${reversed ? 'lg:order-1' : ''}`}>
-        {project.images?.length ? (
-          <Screenshots images={project.images} alt={`${t('projects.shot')} · ${t(`${base}.title`)}`} />
+      {/* perspective 900px sur le conteneur, comme ".gallery__item-wrap" chez Codrops */}
+      <div className={`[perspective:900px] ${reversed ? 'lg:order-1' : ''}`}>
+      <div data-visual className="will-change-transform">
+        {project.shots ? (
+          <Screenshots shots={project.shots} alt={`${t('projects.shot')} · ${t(`${base}.title`)}`} />
         ) : project.visual === 'browser' ? (
           <DirectoryMock />
         ) : (
           <TerminalMock />
         )}
       </div>
+      </div>
     </article>
   )
 }
 
-function LinkButton({ href, label, primary = false }: { href: string; label: string; primary?: boolean }) {
+function LinkButton({ href, label, primary = false, bubble }: { href: string; label: string; primary?: boolean; bubble?: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
+      data-bubble={bubble}
       className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
         primary ? 'bg-accent text-bg' : 'border border-fg/20 text-fg hover:border-accent hover:text-accent'
       }`}

@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, type ReactNode } from 'react'
 import { ScrollRevealText } from '../components/ScrollRevealText'
+import { SectionTitle } from '../components/SectionTitle'
 import { SpotlightCard } from '../components/SpotlightCard'
 import { cefrScale, languages, rhythmWeeks } from '../data/about'
 import { useI18n } from '../i18n/I18nProvider'
@@ -12,15 +13,6 @@ export function About() {
   useLayoutEffect(() => {
     if (prefersReducedMotion) return
     const ctx = gsap.context(() => {
-      // Titre : les mots montent depuis un masque
-      gsap.from('[data-title-word]', {
-        yPercent: 110,
-        duration: 1.1,
-        ease: 'expo.out',
-        stagger: 0.06,
-        scrollTrigger: { trigger: '[data-title]', start: 'top 88%' },
-      })
-
       // Cartes : apparition puis animation interne de chacune
       gsap.utils.toArray<HTMLElement>('[data-card]').forEach((card) => {
         const tl = gsap.timeline({ scrollTrigger: { trigger: card, start: 'top 85%' } })
@@ -38,33 +30,19 @@ export function About() {
 
   return (
     // Remonte sous la fin de la plongée : le titre arrive dès que l'écran remplit le cadre
-    <section ref={rootRef} id="about" className="relative z-10 mx-auto -mt-[90svh] max-w-6xl px-5 pt-24 pb-32 sm:px-8">
-      <div className="mb-10 flex flex-wrap items-center gap-4">
-        <p className="font-mono text-sm text-accent">// {t('about.eyebrow')}</p>
-        <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
-          <span className="relative flex size-2">
-            <span className="absolute inset-0 animate-ping rounded-full bg-accent opacity-70" />
-            <span className="relative size-2 rounded-full bg-accent" />
-          </span>
-          {t('about.status')}
+    <section ref={rootRef} id="about" className="relative z-10 mx-auto -mt-[60svh] max-w-6xl px-5 pt-24 pb-32 sm:px-8">
+      <SectionTitle eyebrow={t('about.eyebrow')} title={t('about.title')} className="max-w-4xl" />
+      <span className="mt-10 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
+        <span className="relative flex size-2">
+          <span className="absolute inset-0 animate-ping rounded-full bg-accent opacity-70" />
+          <span className="relative size-2 rounded-full bg-accent" />
         </span>
-      </div>
-
-      <h2 data-title className="max-w-4xl font-display text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl" aria-label={t('about.title')}>
-        {t('about.title')
-          .split(' ')
-          .map((word, i) => (
-            <span key={i} className="inline-block overflow-hidden pb-1 align-bottom" aria-hidden>
-              <span data-title-word className="inline-block">
-                {word}&nbsp;
-              </span>
-            </span>
-          ))}
-      </h2>
+        {t('about.status')}
+      </span>
 
       <ScrollRevealText
         text={t('about.text')}
-        className="mt-14 max-w-5xl font-display text-2xl leading-snug font-medium text-fg sm:text-4xl sm:leading-tight"
+        className="mt-12 max-w-5xl font-display text-2xl leading-snug font-medium text-fg sm:text-4xl sm:leading-tight"
       />
 
       <div className="mt-24 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

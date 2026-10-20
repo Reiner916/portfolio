@@ -11,8 +11,8 @@ export const skillGroups: { key: 'support' | 'dev'; skills: Skill[] }[] = [
       { key: 'windows', glyph: 'WIN', level: 4 },
       { key: 'hardware', glyph: 'HW', level: 4 },
       { key: 'helpdesk', glyph: 'TKT', level: 4 },
-      { key: 'remote', glyph: 'RMT', level: 4 },
-      { key: 'office', glyph: 'M365', level: 4 },
+      { key: 'remote', glyph: 'RMT', level: 3 },
+      { key: 'office', glyph: 'M365', level: 5 },
     ],
   },
   {

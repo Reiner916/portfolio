@@ -1,14 +1,15 @@
 // Projets (textes dans i18n/*.json → projects.items.<clé>).
 // Pour ajouter un projet : une entrée ici + ses textes dans fr.json / en.json.
-// images : captures dans /public/projects (la 1re est affichée en grand, la 2e en superposition).
-// Sans image, la maquette animée correspondant à `visual` est affichée.
+// shots : captures dans /public/projects. night = capture principale, day = même page en mode jour
+// (révélée par un balayage au scroll), extra = capture flottante en superposition.
+// Sans capture, la maquette animée correspondant à `visual` est affichée.
 
 export type Project = {
   key: string
   featured?: boolean
   stack: string[]
   visual: 'browser' | 'terminal'
-  images?: string[]
+  shots?: { night: string; day?: string; extra?: string }
   demo?: string
   github?: string
 }
@@ -19,7 +20,7 @@ export const projects: Project[] = [
     featured: true,
     stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
     visual: 'browser',
-    images: ['/projects/annuaire-home.webp', '/projects/annuaire-offres.webp'],
+    shots: { night: '/projects/annuaire-home.webp', day: '/projects/annuaire-home-light.webp', extra: '/projects/annuaire-offre.webp' },
     github: 'https://github.com/Reiner916/codes-parrainage',
   },
   {

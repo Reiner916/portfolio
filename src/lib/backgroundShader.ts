@@ -1,3 +1,5 @@
+import { reducedMotion } from './motionPreference'
+
 // Fond animé du site, en GLSL. Le même code est utilisé :
 //  - par le canvas plein écran derrière le site (AnimatedBackground)
 //  - par la dalle de l'écran 3D, en coordonnées écran (gl_FragCoord)
@@ -50,12 +52,12 @@ vec3 siteBackground(vec2 fragCoord) {
   float veil = smoothstep(0.42, 0.66, n);
   float tint = smoothstep(0.4, 0.62, q.y);
   vec3 glow = mix(uAccent, uAccent2, tint * 0.8);
-  col = mix(col, glow * 0.55, 0.18 + veil * 0.62);
-  col += glow * pow(veil, 2.5) * 0.25;
+  col = mix(col, glow * 0.62, 0.3 + veil * 0.6);
+  col += glow * pow(veil, 2.0) * 0.32;
 
   // Vignette
   float vig = smoothstep(1.25, 0.2, length(p * vec2(0.75, 1.05)));
-  col = mix(uBg * 0.85, col, mix(0.4, 1.0, vig));
+  col = mix(uBg, col, mix(0.65, 1.0, vig));
 
   // Grille de points (tous les 28 px CSS) pour la touche "tech"
   vec2 cell = mod(fragCoord, 28.0 * uDpr) - 14.0 * uDpr;
@@ -75,7 +77,6 @@ export function cssColorVec3(name: string): [number, number, number] {
 // Les deux canvas doivent avoir la même densité de pixels pour que la grille de points tombe au même endroit.
 export const SHARED_DPR = Math.min(window.devicePixelRatio || 1, 1.5)
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 // Horloge commune aux deux canvas (figée si l'utilisateur demande moins d'animations).
 export const sharedTime = () => (reducedMotion ? 0 : performance.now() / 1000)

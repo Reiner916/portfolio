@@ -1,7 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
+import { CardFan } from '../components/CardFan'
 import { Marquee } from '../components/Marquee'
 import { SpotlightCard } from '../components/SpotlightCard'
 import { marqueeTechs, skillGroups, type Skill } from '../data/skills'
+import { SectionTitle } from '../components/SectionTitle'
 import { useI18n } from '../i18n/I18nProvider'
 import { gsap, prefersReducedMotion } from '../lib/motion'
 
@@ -21,27 +23,15 @@ export function Skills() {
   useLayoutEffect(() => {
     if (prefersReducedMotion) return
     const ctx = gsap.context(() => {
-      gsap.from('[data-skills-title]', {
-        yPercent: 110,
-        duration: 1.1,
-        ease: 'expo.out',
-        scrollTrigger: { trigger: '[data-skills-title]', start: 'top 90%' },
-      })
-
-      // Chaque groupe de cartes bascule vers le spectateur en entrant (principe Codrops "rotating on scroll")
+      // Barres de niveau qui se remplissent quand le groupe arrive à l'écran
       gsap.utils.toArray<HTMLElement>('[data-skill-grid]').forEach((grid) => {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: grid, start: 'top 82%' } })
-        tl.from(grid.querySelectorAll('[data-skill]'), {
-          rotationX: -40,
-          y: 90,
-          opacity: 0,
-          transformPerspective: 1000,
-          transformOrigin: '50% 100%',
-          duration: 1.1,
-          ease: 'expo.out',
-          stagger: 0.08,
+        gsap.from(grid.querySelectorAll('[data-bar]'), {
+          scaleX: 0,
+          duration: 0.5,
+          ease: 'power3.out',
+          stagger: 0.04,
+          scrollTrigger: { trigger: grid, start: 'top 75%' },
         })
-        tl.from(grid.querySelectorAll('[data-bar]'), { scaleX: 0, duration: 0.5, ease: 'power3.out', stagger: 0.04 }, 0.35)
       })
 
       gsap.from('[data-learning]', {
@@ -59,12 +49,7 @@ export function Skills() {
   return (
     <section ref={rootRef} id="skills" className="relative z-10 py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <p className="mb-6 font-mono text-sm text-accent">// {t('skills.eyebrow')}</p>
-        <h2 className="overflow-hidden pb-1 font-display text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl">
-          <span data-skills-title className="inline-block">
-            {t('skills.title')}
-          </span>
-        </h2>
+        <SectionTitle eyebrow={t('skills.eyebrow')} title={t('skills.title')} />
         <p className="mt-6 max-w-xl text-lg text-muted">{t('skills.intro')}</p>
       </div>
 
@@ -77,12 +62,13 @@ export function Skills() {
         {skillGroups.map((group) => (
           <div key={group.key}>
             <h3 className="mb-6 font-display text-2xl font-semibold text-fg">{t(`skills.groups.${group.key}`)}</h3>
-            <div data-skill-grid className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {group.skills.map((skill) => (
-                <div key={skill.key} data-skill>
-                  <SkillCard skill={skill} />
-                </div>
-              ))}
+            <div data-skill-grid>
+              {/* Triées du niveau le plus haut au plus bas, en éventail (Truus) */}
+              <CardFan
+                items={[...group.skills]
+                  .sort((a, b) => b.level - a.level)
+                  .map((skill) => ({ key: skill.key, node: <SkillCard skill={skill} /> }))}
+              />
             </div>
           </div>
         ))}
@@ -112,7 +98,7 @@ function SkillCard({ skill }: { skill: Skill }) {
   const { t } = useI18n()
   const projects = skill.projects
   return (
-    <SpotlightCard tilt className="h-full">
+    <SpotlightCard className="h-full bg-surface! shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
       <div className="flex items-start justify-between gap-3">
         <span className="grid h-12 min-w-12 place-items-center rounded-2xl border border-fg/10 bg-bg/60 px-2 font-mono text-sm font-semibold text-accent">
           {skill.glyph}

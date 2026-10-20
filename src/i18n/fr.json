@@ -4,7 +4,12 @@
     "label": "Portfolio · 2026"
   },
   "nav": {
-    "skipIntro": "Passer l'intro"
+    "skipIntro": "Passer l'intro",
+    "motion": "Animations",
+    "on": "ON",
+    "off": "OFF",
+    "motionTurnOn": "activer",
+    "motionTurnOff": "couper"
   },
   "intro": {
     "hello": "Bonjour, je suis",
@@ -157,6 +162,18 @@
         "Mobile"
       ]
     },
-    "shot": "Capture du site"
+    "shot": "Capture du site",
+    "night": "Mode nuit",
+    "day": "Mode jour"
+  },
+  "cursor": {
+    "home": "retour à l'accueil",
+    "github": "voir le code",
+    "go": "c'est parti !",
+    "drag": "glisse"
+  },
+  "words": {
+    "line": "je code, je dépanne, j'automatise.",
+    "caption": "Développement et support : les deux faces de mon profil."
   }
 }

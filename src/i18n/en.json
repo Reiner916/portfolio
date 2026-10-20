@@ -4,7 +4,12 @@
     "label": "Portfolio · 2026"
   },
   "nav": {
-    "skipIntro": "Skip intro"
+    "skipIntro": "Skip intro",
+    "motion": "Motion",
+    "on": "ON",
+    "off": "OFF",
+    "motionTurnOn": "turn on",
+    "motionTurnOff": "turn off"
   },
   "intro": {
     "hello": "Hi, I'm",
@@ -157,6 +162,18 @@
         "Mobile"
       ]
     },
-    "shot": "Website screenshot"
+    "shot": "Website screenshot",
+    "night": "Dark mode",
+    "day": "Light mode"
+  },
+  "cursor": {
+    "home": "back to top",
+    "github": "see the code",
+    "go": "let's go!",
+    "drag": "drag"
+  },
+  "words": {
+    "line": "i code, i fix, i automate.",
+    "caption": "Development and support: the two sides of my profile."
   }
 }

@@ -1,36 +1,37 @@
 import { useLayoutEffect, useRef } from 'react'
-import { gsap, prefersReducedMotion } from '../lib/motion'
+import { gsap, prefersReducedMotion, SplitText } from '../lib/motion'
 
-// Texte qui s'éclaire mot à mot au rythme du scroll (effet Capsule) : on lit au fur et à mesure qu'on descend.
+// Paragraphe qui s'éclaire ligne par ligne au scroll — technique et valeurs de Capsule (section "welcome") :
+// chaque ligne a une copie claire superposée, masquée par clip-path: inset(0 0 100%),
+// dévoilée jusqu'à inset(0% 0% 0% 0%) ; ease "none", stagger 0.2, duration 1, scrub, de "top 75%" à "bottom 75%".
 export function ScrollRevealText({ text, className = '' }: { text: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null)
 
   useLayoutEffect(() => {
-    if (prefersReducedMotion) return
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-word]',
-        { opacity: 0.16 },
-        {
-          opacity: 1,
-          ease: 'none',
-          stagger: 0.1,
-          scrollTrigger: { trigger: ref.current, start: 'top 80%', end: 'bottom 50%', scrub: 1 },
-        },
-      )
-    }, ref)
-    return () => ctx.revert()
+    if (prefersReducedMotion || !ref.current) return
+    const split = SplitText.create(ref.current, {
+      type: 'lines',
+      linesClass: 'reveal-line',
+      autoSplit: true, // re-découpe si la largeur change (et une fois les polices chargées)
+      onSplit(self) {
+        const clips = self.lines.map((line) => {
+          const clip = document.createElement('span')
+          clip.className = 'reveal-clip'
+          clip.textContent = line.textContent
+          line.appendChild(clip)
+          return clip
+        })
+        return gsap
+          .timeline({ scrollTrigger: { trigger: ref.current, start: 'top 75%', end: 'bottom 75%', scrub: true } })
+          .to(clips, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', stagger: 0.2, duration: 1 })
+      },
+    })
+    return () => split.revert()
   }, [text])
 
   return (
-    <p ref={ref} className={className} aria-label={text}>
-      {text.split(' ').map((word, i) => (
-        <span key={i} aria-hidden>
-          <span data-word className="inline-block">
-            {word}
-          </span>{' '}
-        </span>
-      ))}
+    <p ref={ref} className={className}>
+      {text}
     </p>
   )
 }
