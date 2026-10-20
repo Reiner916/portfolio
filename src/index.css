@@ -51,6 +51,12 @@ html {
   overflow-x: clip;
 }
 
+/* Rien ne doit élargir la page sur mobile (sinon le navigateur dézoome et les éléments fixes se décalent) */
+body,
+main {
+  overflow-x: clip;
+}
+
 /* Curseurs (mécanique Truus : body = défaut "2 0", liens = "12 12", textes = "12 12") */
 @media (pointer: fine) {
   body {

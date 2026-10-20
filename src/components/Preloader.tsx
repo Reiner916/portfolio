@@ -41,7 +41,8 @@ export function Preloader() {
       const renderCounter = () => {
         const scale = Number(gsap.getProperty(barRef.current, 'scaleX'))
         if (counterRef.current) counterRef.current.textContent = String(Math.round(scale * 100)).padStart(3, '0')
-        const right = barRef.current!.getBoundingClientRect().right
+        if (!barRef.current) return
+        const right = barRef.current.getBoundingClientRect().right
         if (darkNameRef.current) darkNameRef.current.style.clipPath = `inset(0 ${Math.max(0, window.innerWidth - right)}px 0 0)`
       }
 

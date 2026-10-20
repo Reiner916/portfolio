@@ -5,7 +5,18 @@
   },
   "nav": {
     "skipIntro": "Passer l'intro",
-    "skipContent": "Aller au contenu"
+    "skipContent": "Aller au contenu",
+    "menu": "Menu",
+    "close": "Fermer",
+    "language": "Langue",
+    "sections": {
+      "about": "À propos",
+      "skills": "Compétences",
+      "projects": "Projets",
+      "parcours": "Parcours",
+      "cv": "CV",
+      "contact": "Contact"
+    }
   },
   "intro": {
     "hello": "Bonjour, je suis",
