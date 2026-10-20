@@ -4,12 +4,7 @@
     "label": "Portfolio · 2026"
   },
   "nav": {
-    "skipIntro": "Passer l'intro",
-    "motion": "Animations",
-    "on": "ON",
-    "off": "OFF",
-    "motionTurnOn": "activer",
-    "motionTurnOff": "couper"
+    "skipIntro": "Passer l'intro"
   },
   "intro": {
     "hello": "Bonjour, je suis",
@@ -48,7 +43,7 @@
     "mobility": {
       "label": "Mobilité",
       "title": "Savigny-sur-Orge (91)",
-      "detail": "Permis B et véhiculé · mobile sur Paris et sa périphérie"
+      "detail": "Permis B et véhiculé · mobile sur Paris et sa périphérie (RER C et D)"
     },
     "languages": {
       "label": "Langues",
@@ -143,12 +138,12 @@
         ]
       },
       "cleaner": {
-        "title": "Script de nettoyage des fichiers temporaires",
-        "summary": "Un script Batch qui vide en un double-clic les fichiers temporaires de Windows. Il demande une confirmation avant de supprimer quoi que ce soit.",
+        "title": "Automatisation de tâches du quotidien",
+        "summary": "J'écris des scripts pour automatiser les tâches répétitives du quotidien. Exemple : ce script Batch qui vide en un double-clic les fichiers temporaires de Windows, avec une confirmation avant de supprimer quoi que ce soit.",
         "points": [
-          "Nettoie 3 emplacements : %TEMP%, Windows\\Temp et Prefetch",
-          "Confirmation avant suppression",
-          "Lancement en un double-clic"
+          "Nettoyage de 3 emplacements : %TEMP%, Windows\\Temp et Prefetch",
+          "Confirmation avant suppression, lancement en un double-clic",
+          "Et d'autres scripts du même type pour les tâches répétitives"
         ]
       }
     },
@@ -170,10 +165,140 @@
     "home": "retour à l'accueil",
     "github": "voir le code",
     "go": "c'est parti !",
-    "drag": "glisse"
+    "drag": "glisse",
+    "mail": "écris-moi",
+    "call": "appelle-moi",
+    "cv": "voir le CV",
+    "download": "télécharger",
+    "copy": "copier"
   },
   "words": {
     "line": "je code, je dépanne, j'automatise.",
     "caption": "Développement et support : les deux faces de mon profil."
+  },
+  "parcours": {
+    "eyebrow": "Parcours",
+    "title": "D'où je viens.",
+    "experienceTitle": "Expérience en informatique",
+    "educationTitle": "Formation",
+    "otherTitle": "Autres expériences professionnelles",
+    "items": {
+      "devAssistant": {
+        "date": "Janv. – août 2026",
+        "role": "Assistant développeur",
+        "place": "Projet collaboratif · serveur de jeu multijoueur",
+        "points": [
+          "Tests des fonctionnalités, reproduction des anomalies et remontée structurée au développeur",
+          "Participation aux choix de fonctionnalités et propositions de scripts à intégrer",
+          "Montage vidéo et appui à la communication du projet"
+        ],
+        "tags": [
+          "Recette",
+          "Tests",
+          "Montage vidéo"
+        ]
+      },
+      "support": {
+        "date": "2024 – 2025",
+        "role": "Support utilisateur et modération",
+        "place": "Serveur de jeu multijoueur (FiveM) · jusqu'à 500 joueurs connectés",
+        "points": [
+          "Traitement des demandes via un système de tickets : assistance, diagnostic, résolution de litiges",
+          "Application du règlement, arbitrage de situations conflictuelles, animation d'événements",
+          "Astreintes en horaires variables, soirées et week-ends compris"
+        ],
+        "tags": [
+          "Tickets",
+          "Support utilisateur",
+          "Astreintes"
+        ]
+      },
+      "selfTaught": {
+        "date": "En continu",
+        "role": "Pratique personnelle, en autodidacte",
+        "place": "OpenClassrooms et projets perso",
+        "points": [
+          "Cours OpenClassrooms : bases du HTML et du CSS",
+          "Dépannage et assistance des postes de l'entourage, sur place et à distance",
+          "Scripts pour automatiser des tâches du quotidien"
+        ],
+        "tags": [
+          "OpenClassrooms",
+          "HTML / CSS",
+          "Scripts"
+        ]
+      },
+      "bts": {
+        "date": "Depuis sept. 2026",
+        "role": "BTS Services Informatiques aux Organisations",
+        "place": "En alternance · CFA ITIS, Évry-Courcouronnes",
+        "points": [
+          "Au programme : réseaux et Wi-Fi, téléphonie IP, Linux, cybersécurité, infogérance"
+        ]
+      },
+      "mco": {
+        "date": "2023",
+        "role": "BTS Management Commercial Opérationnel",
+        "place": "1re année, non poursuivie",
+        "points": [
+          "Réorientation assumée vers l'informatique"
+        ]
+      },
+      "bac": {
+        "date": "2021 – 2023",
+        "role": "Baccalauréat STMG, mention Assez Bien",
+        "place": "Lycée Jean-Baptiste Corot, Savigny-sur-Orge",
+        "points": [
+          "Spécialité Sciences de l'Information et de Gestion : premières notions d'informatique de gestion, de bases de données et de systèmes d'information"
+        ]
+      }
+    },
+    "other": {
+      "warehouse": {
+        "date": "2023 – 2024",
+        "role": "Agent de manutention · missions d'intérim",
+        "detail": "Ponctualité, adaptation rapide à des équipes et des sites différents"
+      },
+      "fishmonger": {
+        "date": "2022 – 2023",
+        "role": "Vendeur en poissonnerie · La Marée de Paris",
+        "detail": "Approvisionnement à Rungis en horaires décalés, vente et conseil client"
+      },
+      "site": {
+        "date": "2020",
+        "role": "Assistant maître d'œuvre d'exécution · 02P SAS",
+        "detail": "Aide à l'exécution des tâches sur chantier, respect des consignes de sécurité"
+      }
+    }
+  },
+  "resume": {
+    "eyebrow": "CV",
+    "title": "Tout sur une page.",
+    "text": "Mon CV complet : expériences, projets, formation et compétences, à lire ici ou à télécharger en PDF.",
+    "view": "Voir le CV",
+    "download": "Télécharger le PDF",
+    "close": "Fermer",
+    "openTab": "Ouvrir dans un nouvel onglet",
+    "dialogTitle": "CV d'Amir Chouchane",
+    "preview": "Aperçu du CV d'Amir Chouchane"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Travaillons ensemble.",
+    "text": "Vous cherchez un alternant motivé en développement ou en support informatique ? Écrivez-moi, je réponds rapidement.",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "stickers": [
+      "dispo !",
+      "BTS SIO",
+      "anglais C1"
+    ],
+    "footer": "Conçu et développé par Amir Chouchane · 2026",
+    "stack": "React · GSAP · Three.js",
+    "top": "Retour en haut"
   }
 }

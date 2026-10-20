@@ -1,5 +1,5 @@
-// Préférence d'animation : par défaut on suit le réglage du système (prefers-reduced-motion),
-// mais le visiteur peut forcer "animations activées" ou "réduites" avec le bouton de la nav (mémorisé).
+// Préférence d'animation : on suit le réglage du système (prefers-reduced-motion).
+// Pour tester, on peut forcer depuis la console : localStorage.setItem('motion', 'full' | 'reduced') puis recharger.
 
 const KEY = 'motion'
 type Choice = 'full' | 'reduced'
@@ -19,12 +19,3 @@ export const reducedMotion = choice ? choice === 'reduced' : systemPrefersReduce
 
 // Utilisé par le CSS (index.css) pour couper les animations CSS
 document.documentElement.dataset.motion = reducedMotion ? 'reduced' : 'full'
-
-export function setMotion(full: boolean) {
-  try {
-    localStorage.setItem(KEY, full ? 'full' : 'reduced')
-  } catch {
-    /* stockage indisponible : le choix ne sera pas mémorisé */
-  }
-  window.location.reload()
-}

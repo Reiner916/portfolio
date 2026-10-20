@@ -4,12 +4,7 @@
     "label": "Portfolio · 2026"
   },
   "nav": {
-    "skipIntro": "Skip intro",
-    "motion": "Motion",
-    "on": "ON",
-    "off": "OFF",
-    "motionTurnOn": "turn on",
-    "motionTurnOff": "turn off"
+    "skipIntro": "Skip intro"
   },
   "intro": {
     "hello": "Hi, I'm",
@@ -48,7 +43,7 @@
     "mobility": {
       "label": "Location",
       "title": "Savigny-sur-Orge (91), France",
-      "detail": "Driving licence and own car · available across Paris and the surrounding area"
+      "detail": "Driving licence and own car · available across Paris and the surrounding area (RER C and D)"
     },
     "languages": {
       "label": "Languages",
@@ -143,12 +138,12 @@
         ]
       },
       "cleaner": {
-        "title": "Temporary files cleanup script",
-        "summary": "A Batch script that clears Windows temporary files in a double-click. It asks for confirmation before deleting anything.",
+        "title": "Everyday task automation",
+        "summary": "I write scripts to automate repetitive everyday tasks. Example: this Batch script that clears Windows temporary files in a double-click, asking for confirmation before deleting anything.",
         "points": [
           "Cleans 3 locations: %TEMP%, Windows\\Temp and Prefetch",
-          "Confirmation before deleting",
-          "Runs with a double-click"
+          "Confirmation before deleting, runs with a double-click",
+          "And other scripts of the same kind for repetitive tasks"
         ]
       }
     },
@@ -170,10 +165,140 @@
     "home": "back to top",
     "github": "see the code",
     "go": "let's go!",
-    "drag": "drag"
+    "drag": "drag",
+    "mail": "write to me",
+    "call": "call me",
+    "cv": "see resume",
+    "download": "download",
+    "copy": "copy"
   },
   "words": {
     "line": "i code, i fix, i automate.",
     "caption": "Development and support: the two sides of my profile."
+  },
+  "parcours": {
+    "eyebrow": "Background",
+    "title": "Where I come from.",
+    "experienceTitle": "IT experience",
+    "educationTitle": "Education",
+    "otherTitle": "Other work experience",
+    "items": {
+      "devAssistant": {
+        "date": "Jan. – Aug. 2026",
+        "role": "Developer assistant",
+        "place": "Collaborative project · multiplayer game server",
+        "points": [
+          "Feature testing, bug reproduction and structured reporting to the developer",
+          "Involved in feature decisions and suggested scripts to integrate",
+          "Video editing and support for the project's communication"
+        ],
+        "tags": [
+          "QA",
+          "Testing",
+          "Video editing"
+        ]
+      },
+      "support": {
+        "date": "2024 – 2025",
+        "role": "User support and moderation",
+        "place": "Multiplayer game server (FiveM) · up to 500 connected players",
+        "points": [
+          "Handling requests through a ticketing system: assistance, diagnosis, dispute resolution",
+          "Enforcing the rules, mediating conflicts, running events",
+          "On-call duty with variable hours, including evenings and weekends"
+        ],
+        "tags": [
+          "Tickets",
+          "User support",
+          "On-call"
+        ]
+      },
+      "selfTaught": {
+        "date": "Ongoing",
+        "role": "Self-taught practice",
+        "place": "OpenClassrooms and personal projects",
+        "points": [
+          "OpenClassrooms courses: HTML and CSS fundamentals",
+          "Troubleshooting and supporting family members' computers, on site and remotely",
+          "Scripts to automate everyday tasks"
+        ],
+        "tags": [
+          "OpenClassrooms",
+          "HTML / CSS",
+          "Scripts"
+        ]
+      },
+      "bts": {
+        "date": "Since Sept. 2026",
+        "role": "BTS in IT Services for Organisations (SIO)",
+        "place": "Work-study · CFA ITIS, Évry-Courcouronnes",
+        "points": [
+          "Curriculum: networking and Wi-Fi, IP telephony, Linux, cybersecurity, managed IT services"
+        ]
+      },
+      "mco": {
+        "date": "2023",
+        "role": "BTS in Operational Business Management",
+        "place": "1st year, not continued",
+        "points": [
+          "Deliberate switch to IT"
+        ]
+      },
+      "bac": {
+        "date": "2021 – 2023",
+        "role": "Baccalauréat STMG (with honours)",
+        "place": "Lycée Jean-Baptiste Corot, Savigny-sur-Orge",
+        "points": [
+          "Information and Management Systems major: first notions of business IT, databases and information systems"
+        ]
+      }
+    },
+    "other": {
+      "warehouse": {
+        "date": "2023 – 2024",
+        "role": "Warehouse operative · temp assignments",
+        "detail": "Punctuality, quick adaptation to different teams and sites"
+      },
+      "fishmonger": {
+        "date": "2022 – 2023",
+        "role": "Fishmonger sales assistant · La Marée de Paris",
+        "detail": "Early-morning sourcing at Rungis market, sales and customer advice"
+      },
+      "site": {
+        "date": "2020",
+        "role": "Assistant site supervisor · 02P SAS",
+        "detail": "Helping carry out tasks on construction sites, following safety rules"
+      }
+    }
+  },
+  "resume": {
+    "eyebrow": "Resume",
+    "title": "Everything on one page.",
+    "text": "My full resume: experience, projects, education and skills. Read it here or download it as a PDF.",
+    "view": "View resume",
+    "download": "Download PDF",
+    "close": "Close",
+    "openTab": "Open in a new tab",
+    "dialogTitle": "Amir Chouchane's resume",
+    "preview": "Preview of Amir Chouchane's resume"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's work together.",
+    "text": "Looking for a motivated work-study student in development or IT support? Drop me a line, I reply quickly.",
+    "email": "Email",
+    "phone": "Phone",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "stickers": [
+      "available!",
+      "BTS SIO",
+      "English C1"
+    ],
+    "footer": "Designed and built by Amir Chouchane · 2026",
+    "stack": "React · GSAP · Three.js",
+    "top": "Back to top"
   }
 }

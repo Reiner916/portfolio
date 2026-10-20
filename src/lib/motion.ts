@@ -25,6 +25,8 @@ gsap.ticker.lagSmoothing(0)
 
 // Les polices changent la hauteur des textes : on recalcule les positions des animations une fois chargées
 document.fonts.ready.then(() => ScrollTrigger.refresh())
+// Idem une fois toutes les images chargées
+window.addEventListener('load', () => ScrollTrigger.refresh())
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
 

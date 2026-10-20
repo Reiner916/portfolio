@@ -5,7 +5,10 @@ import { Nav } from './components/Nav'
 import { Preloader } from './components/Preloader'
 import { About } from './sections/About'
 import { HorizontalWords } from './sections/HorizontalWords'
+import { Contact } from './sections/Contact'
+import { Parcours } from './sections/Parcours'
 import { Projects } from './sections/Projects'
+import { Resume } from './sections/Resume'
 import { Skills } from './sections/Skills'
 
 export default function App() {
@@ -21,6 +24,9 @@ export default function App() {
         <HorizontalWords />
         <Skills />
         <Projects />
+        <Parcours />
+        <Resume />
+        <Contact />
       </main>
     </>
   )

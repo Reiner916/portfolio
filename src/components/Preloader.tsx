@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties, type Ref } from 'react'
 import { useI18n } from '../i18n/I18nProvider'
 import { sceneReady, startIntro } from '../lib/loading'
-import { gsap, lenis, prefersReducedMotion } from '../lib/motion'
+import { gsap, lenis, prefersReducedMotion, ScrollTrigger } from '../lib/motion'
 
 // Preloader "gélule" — structure, timeline et valeurs de Capsule, couleurs Lagon :
 //  - un calque plein écran (couleur du fond) percé d'une gélule (mask-image + mask-composite: subtract, 40 % de large)
@@ -71,7 +71,11 @@ export function Preloader() {
             .to('[data-progress]', { opacity: 0, duration: 0.7, ease: 'power3.out' }, '<')
             .to('[data-mask]', { scale: 6, duration: 4, ease: 'power3.out' }, '<')
             // L'arrivée de la caméra démarre pendant que la gélule s'ouvre
-            .add(startIntro, '<')
+            // Positions recalculées (page complète) juste avant de lancer l'intro
+            .add(() => {
+              ScrollTrigger.refresh()
+              startIntro()
+            }, '<')
             .to('[data-mask]', { opacity: 0, duration: 1 }, '<+=1')
             .set(rootRef.current, { pointerEvents: 'none' }, '<')
         })

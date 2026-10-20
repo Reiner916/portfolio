@@ -1,0 +1,219 @@
+<!doctype html>
+<!-- Source du CV. PDF généré avec : node cv/build-cv.mjs  → public/cv/CV_Amir_Chouchane.pdf -->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>CV · Amir Chouchane</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      @page { size: A4; margin: 0; }
+      :root {
+        --ink: #0a1014;
+        --ink-2: #3b4b51;
+        --muted: #6b7f85;
+        --line: #dfe7e9;
+        --teal: #0e8f82;
+        --teal-light: #2dd4bf;
+        --side: #0a1014;
+        --side-ink: #e6f2f3;
+        --side-muted: #8fa5ab;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 210mm; height: 297mm; }
+      body { font-family: Inter, sans-serif; font-size: 8.3pt; line-height: 1.38; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { display: grid; grid-template-columns: 66mm 1fr; height: 297mm; overflow: hidden; }
+
+      /* Colonne de gauche */
+      aside { background: var(--side); color: var(--side-ink); padding: 11mm 7mm 8mm 9mm; display: flex; flex-direction: column; gap: 4.2mm; position: relative; overflow: hidden; }
+      aside::before { content: ""; position: absolute; width: 90mm; height: 90mm; left: -30mm; top: -38mm; border-radius: 50%; background: radial-gradient(circle, rgba(45,212,191,.35), transparent 65%); }
+      aside::after { content: ""; position: absolute; width: 80mm; height: 80mm; right: -45mm; bottom: -30mm; border-radius: 50%; background: radial-gradient(circle, rgba(56,189,248,.22), transparent 65%); }
+      aside > * { position: relative; }
+      .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 25pt; line-height: .95; letter-spacing: -.02em; }
+      .role { margin-top: 3mm; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 10pt; color: var(--teal-light); line-height: 1.25; }
+      .pill { display: inline-flex; align-items: center; gap: 1.6mm; margin-top: 3mm; padding: .9mm 2.6mm; border: .3mm solid rgba(45,212,191,.5); border-radius: 10mm; font-size: 7.4pt; color: var(--teal-light); }
+      .pill i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--teal-light); }
+      aside h2 { font-family: "JetBrains Mono", monospace; font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 2mm; }
+      .contact li { list-style: none; display: grid; grid-template-columns: 4mm 1fr; gap: 1.8mm; align-items: center; margin-bottom: 1.3mm; font-size: 8pt; }
+      .contact svg { width: 3.2mm; height: 3.2mm; stroke: var(--teal-light); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .contact a { color: var(--side-ink); text-decoration: none; }
+      .skill { margin-bottom: 1.5mm; }
+      .skill-top { display: flex; justify-content: space-between; gap: 2mm; font-size: 7.9pt; }
+      .skill-top span:last-child { color: var(--side-muted); font-family: "JetBrains Mono", monospace; font-size: 7pt; }
+      .bars { display: grid; grid-template-columns: repeat(5, 1fr); gap: .8mm; margin-top: .7mm; }
+      .bars b { height: 1.1mm; border-radius: 1mm; background: rgba(230,242,243,.12); }
+      .bars b.on { background: var(--teal-light); }
+      .sub { font-size: 7pt; color: var(--side-muted); margin: 2.2mm 0 1.2mm; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+      .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+      .chips span { border: .25mm solid rgba(230,242,243,.18); border-radius: 10mm; padding: .5mm 2mm; font-size: 7.2pt; color: var(--side-ink); }
+      .lang { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.2mm; }
+      .lang strong { font-family: "Space Grotesk", sans-serif; font-weight: 700; color: var(--teal-light); }
+      .plain li { list-style: none; font-size: 8pt; margin-bottom: .6mm; }
+
+      /* Colonne principale */
+      main { padding: 11mm 11mm 8mm 9mm; display: flex; flex-direction: column; gap: 3.6mm; }
+      main h2 { display: flex; align-items: center; gap: 2.5mm; font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 11pt; letter-spacing: -.01em; margin-bottom: 2.2mm; }
+      main h2::after { content: ""; flex: 1; height: .3mm; background: var(--line); }
+      main h2 em { font-style: normal; color: var(--teal); }
+      .profile { font-size: 8.8pt; line-height: 1.45; color: var(--ink-2); }
+      .profile b { color: var(--ink); font-weight: 600; }
+      .item { margin-bottom: 2.3mm; }
+      .item:last-child { margin-bottom: 0; }
+      .item-head { display: flex; justify-content: space-between; gap: 3mm; align-items: baseline; }
+      .item-title { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 9.6pt; }
+      .item-date { font-family: "JetBrains Mono", monospace; font-size: 7.2pt; color: var(--teal); white-space: nowrap; }
+      .item-place { font-size: 7.9pt; color: var(--muted); margin-top: .2mm; }
+      .item ul { margin-top: 1mm; padding-left: 3.4mm; }
+      .item li { margin-bottom: .5mm; color: var(--ink-2); }
+      .item li::marker { color: var(--teal); }
+      .stack { display: inline-flex; flex-wrap: wrap; gap: 1mm; margin-left: 1.5mm; vertical-align: middle; }
+      .stack span { font-family: "JetBrains Mono", monospace; font-size: 6.6pt; color: var(--teal); border: .25mm solid #bfe3de; border-radius: 1mm; padding: 0 1.2mm; }
+      .link { font-family: "JetBrains Mono", monospace; font-size: 7pt; color: var(--teal); text-decoration: none; white-space: nowrap; }
+      .other li { list-style: none; display: grid; grid-template-columns: 20mm 1fr; gap: 2mm; color: var(--ink-2); font-size: 7.9pt; margin-bottom: .7mm; }
+      .other li span:first-child { font-family: "JetBrains Mono", monospace; font-size: 7pt; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <aside>
+        <div>
+          <h1 class="name">Amir<br />Chouchane</h1>
+          <p class="role">Alternance BTS SIO<br />Développement web &amp; support IT</p>
+          <span class="pill"><i></i>Disponible · rythme 2 j / 3 j</span>
+        </div>
+
+        <section>
+          <h2>Contact</h2>
+          <ul class="contact">
+            <li><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 6l9 7 9-7" /></svg><a href="mailto:am.ch951@gmail.com">am.ch951@gmail.com</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2" /></svg><a href="tel:+33769692618">07 69 69 26 18</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z" /><circle cx="12" cy="9" r="2.5" /></svg>Savigny-sur-Orge (91600)</li>
+            <li><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" /></svg><a href="https://www.linkedin.com/in/amir-chouchane">linkedin.com/in/amir-chouchane</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" /></svg><a href="https://github.com/Reiner916">github.com/Reiner916</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 17h14l-1.5-6.5A2 2 0 0 0 15.5 9h-7a2 2 0 0 0-2 1.5zM7 17v2M17 17v2" /><circle cx="8" cy="14" r=".5" /><circle cx="16" cy="14" r=".5" /></svg>Permis B, véhiculé · Paris et périphérie</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Compétences</h2>
+          <p class="sub" style="margin-top: 0">Support &amp; matériel</p>
+          <div class="skill"><div class="skill-top"><span>Microsoft 365 &amp; Google Workspace</span><span>5/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></div></div>
+          <div class="skill"><div class="skill-top"><span>Postes Windows : installation, dépannage</span><span>4/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div></div>
+          <div class="skill"><div class="skill-top"><span>Montage &amp; upgrade (RAM, SSD NVMe)</span><span>4/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div></div>
+          <div class="skill"><div class="skill-top"><span>Support utilisateurs &amp; tickets</span><span>4/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div></div>
+          <div class="skill"><div class="skill-top"><span>Assistance à distance (TeamViewer, Parsec)</span><span>3/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b></div></div>
+          <p class="sub">Développement</p>
+          <div class="skill"><div class="skill-top"><span>Scripts d'automatisation (Batch)</span><span>3/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b></div></div>
+          <div class="skill"><div class="skill-top"><span>Next.js / React</span><span>2/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b></b><b></b><b></b></div></div>
+          <div class="skill"><div class="skill-top"><span>HTML / CSS</span><span>2/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b></b><b></b><b></b></div></div>
+          <div class="skill"><div class="skill-top"><span>SQL &amp; bases de données</span><span>2/5</span></div><div class="bars"><b class="on"></b><b class="on"></b><b></b><b></b><b></b></div></div>
+          <p class="sub">Au programme du BTS</p>
+          <div class="chips"><span>Réseaux &amp; Wi-Fi</span><span>Téléphonie IP</span><span>Linux</span><span>Cybersécurité</span><span>Infogérance</span></div>
+        </section>
+
+        <section>
+          <h2>Langues</h2>
+          <div class="lang"><span>Anglais</span><strong>C1</strong></div>
+          <div class="lang"><span>Espagnol</span><strong style="color: var(--side-muted)">B1</strong></div>
+        </section>
+
+        <section>
+          <h2>Savoir-être</h2>
+          <ul class="plain"><li>Sens du service et du contact</li><li>Autonomie et rigueur</li><li>Logique, résolution de problèmes</li><li>À l'aise avec des horaires variables</li></ul>
+        </section>
+
+        <section>
+          <h2>Centres d'intérêt</h2>
+          <p style="font-size: 8pt">Jeux vidéo · Nouvelles technologies · Montage vidéo</p>
+        </section>
+      </aside>
+
+      <main>
+        <section>
+          <h2>Profil</h2>
+          <p class="profile">
+            Étudiant en <b>BTS SIO au CFA ITIS</b> d'Évry-Courcouronnes, je recherche une <b>alternance en développement ou en support informatique</b>
+            (rythme 2 jours école / 3 jours entreprise). Passionné d'informatique, je crée des sites en <b>Next.js / React</b> sur mon temps libre,
+            j'automatise des tâches avec des scripts et j'ai l'habitude du <b>support utilisateur par tickets</b> auprès d'une communauté de 500 joueurs.
+          </p>
+        </section>
+
+        <section>
+          <h2><em>01</em> Expérience en informatique</h2>
+          <div class="item">
+            <div class="item-head"><span class="item-title">Assistant développeur</span><span class="item-date">janv. – août 2026</span></div>
+            <p class="item-place">Projet collaboratif · serveur de jeu multijoueur (développeur, community manager, graphistes)</p>
+            <ul>
+              <li>Tests des fonctionnalités, reproduction des anomalies et remontée structurée au développeur.</li>
+              <li>Participation aux choix de fonctionnalités et propositions de scripts à intégrer.</li>
+              <li>Montage vidéo et appui à la communication du projet.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="item-head"><span class="item-title">Support utilisateur et modération</span><span class="item-date">2024 – 2025</span></div>
+            <p class="item-place">Serveur de jeu multijoueur (FiveM) · jusqu'à 500 joueurs connectés</p>
+            <ul>
+              <li>Traitement des demandes via un système de tickets : assistance, diagnostic, résolution de litiges.</li>
+              <li>Application du règlement, arbitrage de situations conflictuelles, animation d'événements.</li>
+              <li>Astreintes en horaires variables, soirées et week-ends compris.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2><em>02</em> Projets</h2>
+          <div class="item">
+            <div class="item-head">
+              <span class="item-title">Annuaire de codes de parrainage<span class="stack"><span>Next.js</span><span>React</span><span>TypeScript</span><span>Tailwind</span></span></span>
+              <a class="link" href="https://github.com/Reiner916/codes-parrainage">GitHub ↗</a>
+            </div>
+            <p class="item-place">Projet personnel · conçu et développé seul de A à Z</p>
+            <ul>
+              <li>Annuaire de codes (banques, néobanques, crypto) : catégories, moteur de recherche interne, mode jour / nuit.</li>
+              <li>Espace d'administration sécurisé : ajout, modification et réorganisation des offres, upload de logos.</li>
+              <li>Statistiques de copies des codes, référencement (plan du site, images d'aperçu générées).</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="item-head"><span class="item-title">Automatisation de tâches du quotidien<span class="stack"><span>Batch</span><span>Windows</span></span></span></div>
+            <ul>
+              <li>Script de nettoyage des fichiers temporaires (%TEMP%, Windows\Temp, Prefetch) avec confirmation, et d'autres scripts du même type.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="item-head"><span class="item-title">Pratique personnelle, en autodidacte</span><span class="item-date">en continu</span></div>
+            <ul>
+              <li>Cours OpenClassrooms (bases HTML et CSS) · dépannage des postes de l'entourage, sur place et à distance.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2><em>03</em> Formation</h2>
+          <div class="item">
+            <div class="item-head"><span class="item-title">BTS Services Informatiques aux Organisations</span><span class="item-date">depuis sept. 2026</span></div>
+            <p class="item-place">En alternance · CFA ITIS, Évry-Courcouronnes</p>
+          </div>
+          <div class="item">
+            <div class="item-head"><span class="item-title">BTS Management Commercial Opérationnel (1re année)</span><span class="item-date">2023</span></div>
+            <p class="item-place">Non poursuivi · réorientation assumée vers l'informatique</p>
+          </div>
+          <div class="item">
+            <div class="item-head"><span class="item-title">Baccalauréat STMG, mention Assez Bien</span><span class="item-date">2021 – 2023</span></div>
+            <p class="item-place">Lycée Jean-Baptiste Corot, Savigny-sur-Orge · spécialité Sciences de l'Information et de Gestion</p>
+          </div>
+        </section>
+
+        <section>
+          <h2><em>04</em> Autres expériences</h2>
+          <ul class="other">
+            <li><span>2023 – 2024</span><span>Agent de manutention, missions d'intérim · ponctualité, adaptation à des équipes variées</span></li>
+            <li><span>2022 – 2023</span><span>Vendeur en poissonnerie, La Marée de Paris · Rungis en horaires décalés, conseil client</span></li>
+            <li><span>2020</span><span>Assistant maître d'œuvre d'exécution, 02P SAS · chantier, consignes de sécurité</span></li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
