@@ -1,32 +1,46 @@
-# React + TypeScript + Vite
+# Portfolio · Amir Chouchane
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portfolio personnel d'**Amir Chouchane**, étudiant en BTS SIO au CFA ITIS d'Évry-Courcouronnes, en recherche d'une alternance en développement web et support informatique (rythme 2 jours école / 3 jours entreprise).
 
-Currently, two official plugins are available:
+![Aperçu du portfolio](public/og.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Ce qu'il y a dedans
 
-## React Compiler
+- **Intro en 3D** : un bureau modélisé en code (Three.js / React Three Fiber) ; en scrollant, on plonge dans l'écran, dont le fond devient celui du site
+- **Animations au scroll** (GSAP, ScrollTrigger, Lenis) inspirées de sites primés : texte qui s'éclaire ligne par ligne, cartes en éventail, mots géants qui défilent, curseur personnalisé
+- Sections : à propos, compétences (niveaux sur 5), projets, parcours, CV (lecture et téléchargement), contact
+- **Français / anglais** : tous les textes sont dans `src/i18n/fr.json` et `src/i18n/en.json`
+- **Mode léger automatique** sur les appareils peu puissants ou les connexions lentes (image de la scène à la place de la 3D), respect du réglage « réduire les animations »
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies
 
-## Expanding the Oxlint configuration
+Vite · React 19 · TypeScript · Tailwind CSS 4 · GSAP · Lenis · Three.js · React Three Fiber
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Lancer le projet
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # version de production dans dist/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+L'adresse publique du site se renseigne dans `.env` (`VITE_SITE_URL`) pour les aperçus de partage.
+
+## Organisation
+
+```
+src/
+├── components/   Intro 3D, preloader, menu, curseur, cartes, effets
+├── sections/     À propos, compétences, projets, parcours, CV, contact
+├── data/         Contenu (compétences, projets, parcours, coordonnées)
+├── i18n/         Textes en français et en anglais
+└── lib/          Scroll fluide, chargement, mode léger, fond animé
+cv/               Source HTML du CV et script qui génère le PDF
+og/               Source de l'image d'aperçu de partage
+```
+
+## Contact
+
+- E-mail : [am.ch951@gmail.com](mailto:am.ch951@gmail.com)
+- LinkedIn : [amir-chouchane](https://www.linkedin.com/in/amir-chouchane)
+- GitHub : [@Reiner916](https://github.com/Reiner916)
