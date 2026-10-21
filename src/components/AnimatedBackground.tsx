@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { backgroundGlsl, cssColorVec3, sharedTime, SHARED_DPR } from '../lib/backgroundShader'
 import { prefersReducedMotion } from '../lib/motion'
+import { isLite, onLiteChange } from '../lib/quality'
 
 const VERTEX = `attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }`
 const FRAGMENT = `precision highp float;\n${backgroundGlsl}\nvoid main() { gl_FragColor = vec4(siteBackground(gl_FragCoord.xy), 1.0); }`
@@ -38,34 +39,45 @@ export function AnimatedBackground() {
     gl.uniform3fv(u('uBg'), cssColorVec3('--c-bg'))
     gl.uniform3fv(u('uAccent'), cssColorVec3('--c-accent'))
     gl.uniform3fv(u('uAccent2'), cssColorVec3('--c-accent-2'))
-    gl.uniform1f(u('uDpr'), SHARED_DPR)
     const uTime = u('uTime')
     const uResolution = u('uResolution')
+    const uDpr = u('uDpr')
+    const uOctaves = u('uOctaves')
 
+    // Mode léger : fond calculé en moitié de résolution (il est flou, ça ne se voit pas) et limité à 30 images/s
     const resize = () => {
-      canvas.width = Math.round(window.innerWidth * SHARED_DPR)
-      canvas.height = Math.round(window.innerHeight * SHARED_DPR)
+      const dpr = isLite() ? 0.5 : SHARED_DPR
+      canvas.width = Math.round(window.innerWidth * dpr)
+      canvas.height = Math.round(window.innerHeight * dpr)
       gl.viewport(0, 0, canvas.width, canvas.height)
       gl.uniform2f(uResolution, canvas.width, canvas.height)
+      gl.uniform1f(uDpr, dpr)
+      gl.uniform1f(uOctaves, isLite() ? 3 : 5)
     }
 
     let frame = 0
+    let last = 0
     const draw = () => {
       gl.uniform1f(uTime, sharedTime())
       gl.drawArrays(gl.TRIANGLES, 0, 3)
     }
-    const loop = () => {
-      draw()
+    const loop = (now: number) => {
+      if (!isLite() || now - last >= 33) {
+        last = now
+        draw()
+      }
       frame = requestAnimationFrame(loop)
     }
 
     resize()
     window.addEventListener('resize', resize)
+    const offLite = onLiteChange(resize)
     if (prefersReducedMotion) draw()
-    else loop()
+    else frame = requestAnimationFrame(loop)
 
     return () => {
       cancelAnimationFrame(frame)
+      offLite()
       window.removeEventListener('resize', resize)
     }
   }, [])

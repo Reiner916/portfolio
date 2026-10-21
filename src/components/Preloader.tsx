@@ -12,6 +12,7 @@ import { gsap, lenis, prefersReducedMotion, ScrollTrigger } from '../lib/motion'
 //  - sortie : lettres x → -100 %, lignes y → -100 %, barre opacity 0 (0.7 s),
 //    puis la gélule grandit (scale 6, 4 s, "power3.out") et laisse apparaître le site
 const BAR_DURATION = 3.5
+const SCENE_WAIT_MAX = 1500 // ms d'attente max pour la 3D une fois l'animation finie
 
 function progressBar(target: Element, onUpdate: () => void) {
   const tl = gsap.timeline()
@@ -35,6 +36,8 @@ export function Preloader() {
   const name = t('intro.name')
 
   useLayoutEffect(() => {
+    // Le preloader React prend le relais de la gélule statique d'index.html
+    document.getElementById('boot')?.remove()
     lenis.stop()
     let cancelled = false
     const ctx = gsap.context(() => {
@@ -56,7 +59,12 @@ export function Preloader() {
         .add(progressBar(barRef.current!, renderCounter), '<')
       if (prefersReducedMotion) intro.timeScale(4)
 
-      const ready = Promise.all([sceneReady, document.fonts.ready, new Promise<void>((r) => intro.eventCallback('onComplete', () => r()))])
+      // On attend la fin de l'animation, puis la 3D et les polices au plus 1.5 s de plus :
+      // si elle n'est pas prête (PC lent), l'image de la scène la remplace le temps qu'elle arrive.
+      const introDone = new Promise<void>((r) => intro.eventCallback('onComplete', () => r()))
+      const ready = introDone.then(() =>
+        Promise.race([Promise.all([sceneReady, document.fonts.ready]), new Promise<void>((r) => setTimeout(r, SCENE_WAIT_MAX))]),
+      )
       ready.then(() => {
         if (cancelled) return
         ctx.add(() => {

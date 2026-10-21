@@ -1,7 +1,8 @@
-import { lazy, Suspense, useLayoutEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useI18n } from '../../i18n/I18nProvider'
-import { onIntroStart } from '../../lib/loading'
+import { markSceneReady, onIntroStart, sceneReady } from '../../lib/loading'
 import { gsap, lenis, ScrollTrigger } from '../../lib/motion'
+import { isLite, onLiteChange } from '../../lib/quality'
 
 const IntroCanvas = lazy(() => import('./IntroCanvas'))
 
@@ -19,6 +20,20 @@ export function Intro() {
   const progress = useRef(0)
   const overlay = useRef(1)
   const [active, setActive] = useState(true)
+  // Mode léger : pas de 3D, l'image de la scène zoome au scroll (2.5D). Hors mode léger, cette même image
+  // s'affiche sous la 3D le temps qu'elle se prépare, puis disparaît.
+  const [lite, setLite] = useState(isLite)
+  const [sceneShown, setSceneShown] = useState(false)
+  const posterRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => onLiteChange(setLite), [])
+  useEffect(() => {
+    let alive = true
+    sceneReady.then(() => alive && !isLite() && setSceneShown(true))
+    return () => {
+      alive = false
+    }
+  }, [])
 
   useLayoutEffect(() => {
     let unsubscribe = () => {}
@@ -46,6 +61,11 @@ export function Intro() {
         },
         0,
       )
+      // Image de la scène : plongée en power2.in comme la caméra, fondu à la fin
+      // (l'image ne peut pas "reculer" sans montrer ses bords : en haut de page, simple léger zoom avant)
+      tl.fromTo(posterRef.current, { scale: 1 }, { scale: 1.08, duration: BACK }, 0)
+      tl.to(posterRef.current, { scale: 3.6, ease: 'power2.in', duration: 1 - BACK }, BACK)
+      tl.to(posterRef.current, { opacity: 0, duration: 0.1 }, 0.86)
       tl.to(hintRef.current, { autoAlpha: 0, duration: 0.04 }, BACK + 0.01)
       tl.to(canvasWrapRef.current, { autoAlpha: 0, duration: 0.05 }, 0.95)
 
@@ -75,9 +95,25 @@ export function Intro() {
     >
       <div className="sticky top-0 h-svh w-full overflow-hidden">
         <div ref={canvasWrapRef} className="absolute inset-0">
-          <Suspense fallback={null}>
-            <IntroCanvas active={active} progress={progress} overlay={overlay} back={BACK} />
-          </Suspense>
+          <div className={`absolute inset-0 ${sceneShown && !lite ? 'invisible' : ''}`} aria-hidden>
+            <div ref={posterRef} className="absolute inset-0 will-change-transform">
+              <picture>
+                <source media="(max-aspect-ratio: 1/1)" srcSet="/intro/poster-mobile.webp" />
+                <img
+                  src="/intro/poster-desktop.webp"
+                  alt=""
+                  fetchPriority="high"
+                  onLoad={() => isLite() && markSceneReady()}
+                  className="size-full object-cover"
+                />
+              </picture>
+            </div>
+          </div>
+          {!lite && (
+            <Suspense fallback={null}>
+              <IntroCanvas active={active} progress={progress} overlay={overlay} back={BACK} />
+            </Suspense>
+          )}
         </div>
 
         {/* Indication de scroll : pastille bien visible en bas, au-dessus du décor */}

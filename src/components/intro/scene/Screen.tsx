@@ -104,6 +104,7 @@ export function Screen({ overlay }: { overlay: RefObject<number> }) {
           uAccent2: { value: new THREE.Vector3(...cssColorVec3('--c-accent-2')) },
           uText: { value: textTexture },
           uOverlay: { value: 1 },
+          uOctaves: { value: 5 },
           uOffset: { value: new THREE.Vector2() },
         },
       }),

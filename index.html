@@ -26,8 +26,16 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Gélule affichée instantanément (avant le chargement du code) : identique au 1er état du preloader React,
+         qui la remplace sans saut. -->
+    <style>
+      #boot { position: fixed; inset: 0; z-index: 99; background: #0a1014; display: grid; place-items: center; }
+      #boot span { width: 40vw; aspect-ratio: 710 / 255; border-radius: 999px; background: #111c21; }
+      @media (max-width: 800px) { #boot span { width: 80vw; } }
+    </style>
   </head>
   <body>
+    <div id="boot" aria-hidden="true"><span></span></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
