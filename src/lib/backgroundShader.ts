@@ -13,10 +13,12 @@ uniform vec3 uBg;
 uniform vec3 uAccent;
 uniform vec3 uAccent2;
 
+// Hash "sans sinus" de Dave Hoskins : petits multiplicateurs, donc stable même sur les puces graphiques
+// qui calculent en précision réduite (l'ancien hash ×456 y créait des motifs répétés avec des coutures)
 float hash(vec2 p) {
-  p = fract(p * vec2(123.34, 456.21));
-  p += dot(p, p + 45.32);
-  return fract(p.x * p.y);
+  vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+  p3 += dot(p3, p3.yzx + 33.33);
+  return fract((p3.x + p3.y) * p3.z);
 }
 
 float noise(vec2 p) {
@@ -44,7 +46,8 @@ vec3 siteBackground(vec2 fragCoord) {
   vec2 uv = fragCoord / uResolution;
   float aspect = uResolution.x / uResolution.y;
   vec2 p = vec2((uv.x - 0.5) * aspect, uv.y - 0.5);
-  float t = uTime * 0.045;
+  // Temps borné (cycle de 20 min) pour garder des coordonnées petites, donc précises
+  float t = mod(uTime, 1200.0) * 0.045;
 
   // Bruit "déformé" : des voiles lumineux qui ondulent lentement (façon aurore)
   vec2 q = vec2(fbm(p * 2.2 + vec2(t, -t * 0.7)), fbm(p * 2.2 + vec2(-t * 0.8, t) + 4.3));

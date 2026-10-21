@@ -112,7 +112,8 @@ main {
   inset: 0;
   color: var(--c-fg);
   clip-path: inset(0 0 100%);
-  white-space: nowrap;
+  /* même retour à la ligne que la ligne de base, pour la couvrir exactement */
+  white-space: normal;
 }
 
 .preloader-mask {

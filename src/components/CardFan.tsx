@@ -1,11 +1,11 @@
 import { useLayoutEffect, useRef, type CSSProperties, type ReactNode } from 'react'
-import { gsap, prefersReducedMotion, ScrollTrigger } from '../lib/motion'
+import { gsap, prefersReducedMotion } from '../lib/motion'
 
 // Éventail de cartes — code et valeurs de Truus (section "call us if you need") :
 //  ≥ 1349 px : cartes posées en éventail (left / top / rotation ci-dessous, 320 px de large) ;
 //              au survol, la carte se redresse (y 50 - top, scale 1.08, 0.9 s "elastic.out(1, 0.5)")
 //              et les autres s'écartent (±150 px par rang, y = x · tan(rotation)), retour "elastic.out(1, 0.5)" + 0.08 s
-//  ≤ 768 px  : cartes empilées dans une section épinglée, chacune monte (y 1.1·vh → 0, "power3.out", scrub 0.4)
+//  ≤ 768 px  : liste verticale, chaque carte se redresse en entrant à l'écran
 //  entre les deux : grille simple.
 const CARD_W = 320
 const LAYOUTS: Record<number, { left: number[]; top: number[]; rotation: number[] }> = {
@@ -65,31 +65,17 @@ export function CardFan({ items }: { items: { key: string; node: ReactNode }[] }
       return () => handlers.forEach((off) => off())
     })
 
+    // Mobile : liste verticale ; chaque carte arrive légèrement penchée et se redresse en entrant à l'écran
     mm.add('(max-width: 768px)', () => {
-      const wrapper = wrapperRef.current!
-      const cards = gsap.utils.toArray<HTMLElement>('[data-fan-card]', wrapper)
-      const step = 0.8 * window.innerHeight
-      cards.forEach((card, i) =>
-        gsap.set(card, {
-          position: 'absolute',
-          left: '50%',
-          top: 0,
-          xPercent: -50,
-          y: i === 0 ? 0 : 1.1 * window.innerHeight,
+      gsap.utils.toArray<HTMLElement>('[data-fan-card]', wrapperRef.current).forEach((card, i) => {
+        gsap.from(card, {
+          y: 60,
+          opacity: 0,
           rotation: MOBILE_ROTATIONS[i % MOBILE_ROTATIONS.length],
-          zIndex: i + 1,
-          transformOrigin: 'center center',
-        }),
-      )
-      gsap.set(wrapper, { height: 0.7 * window.innerHeight + step * (cards.length - 1) })
-      ScrollTrigger.create({ trigger: wrapper, start: 'top 60px', end: `+=${step * (cards.length - 1)}`, pin: true, pinSpacing: true })
-      cards.forEach((card, i) => {
-        if (i === 0) return
-        gsap.fromTo(
-          card,
-          { y: 1.1 * window.innerHeight },
-          { y: 0, ease: 'power3.out', scrollTrigger: { trigger: wrapper, start: `top+=${(i - 1) * step} 60px`, end: `top+=${i * step} 60px`, scrub: 0.4 } },
-        )
+          duration: 1,
+          ease: 'elastic.out(1, 0.6)',
+          scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none reverse' },
+        })
       })
     })
 
@@ -99,13 +85,13 @@ export function CardFan({ items }: { items: { key: string; node: ReactNode }[] }
   return (
     <div
       ref={wrapperRef}
-      className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-[768px]:block min-[1349px]:left-1/2 min-[1349px]:block min-[1349px]:h-[600px] min-[1349px]:w-[1400px] min-[1349px]:-translate-x-1/2"
+      className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3 min-[1349px]:left-1/2 min-[1349px]:block min-[1349px]:h-[600px] min-[1349px]:w-[1400px] min-[1349px]:-translate-x-1/2"
     >
       {items.map((item, i) => (
         <div
           key={item.key}
           data-fan-card
-          className="max-[768px]:w-[82vw] max-[768px]:max-w-[340px] min-[1349px]:absolute min-[1349px]:h-[420px] min-[1349px]:w-[320px] min-[1349px]:left-(--fan-left) min-[1349px]:top-(--fan-top)"
+          className="min-[1349px]:absolute min-[1349px]:h-[420px] min-[1349px]:w-[320px] min-[1349px]:left-(--fan-left) min-[1349px]:top-(--fan-top)"
           style={{ '--fan-left': `calc(50% + ${layout.left[i]}px)`, '--fan-top': `${layout.top[i]}px` } as CSSProperties}
         >
           {item.node}

@@ -91,7 +91,8 @@ export function Contact() {
         </h2>
         <p className="mt-8 max-w-xl text-lg leading-relaxed text-fg/75">{t('contact.text')}</p>
 
-        <div data-contact-list className="mt-16 grid gap-4 md:grid-cols-3">
+        {/* minmax(0, 1fr) : une colonne qui ne dépasse jamais l'écran, même avec une longue adresse e-mail */}
+        <div data-contact-list className="mt-16 grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-3">
           <EmailCard />
           <ContactLink label={t('contact.phone')} value={contact.phone} href={contact.phoneHref} bubble={t('cursor.call')} icon={<PhoneIcon />} />
           <ContactLink label={t('contact.linkedin')} value="in/amir-chouchane" href={contact.linkedin} bubble="LinkedIn ↗" icon={<LinkedInIcon />} external />
@@ -153,13 +154,13 @@ function EmailCard() {
     }
   }
   return (
-    <div data-contact-reveal className="group relative flex items-center gap-4 rounded-3xl border border-accent/40 bg-accent/10 p-6 backdrop-blur-md md:col-span-3 sm:p-8">
-      <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-accent text-bg">
+    <div data-contact-reveal className="group relative flex min-w-0 items-center gap-3 rounded-3xl border border-accent/40 bg-accent/10 p-5 backdrop-blur-md sm:gap-4 sm:p-8 md:col-span-3">
+      <span className="grid size-10 shrink-0 place-items-center rounded-2xl bg-accent text-bg sm:size-12">
         <MailIcon />
       </span>
       <div className="min-w-0 flex-1">
         <p className="font-mono text-xs tracking-wider text-accent uppercase">{t('contact.email')}</p>
-        <a href={`mailto:${contact.email}`} data-bubble={t('cursor.mail')} className="mt-1 block truncate font-display text-2xl font-semibold text-fg hover:text-accent sm:text-4xl">
+        <a href={`mailto:${contact.email}`} data-bubble={t('cursor.mail')} className="mt-1 block truncate font-display text-lg font-semibold text-fg hover:text-accent sm:text-4xl">
           {contact.email}
         </a>
       </div>
@@ -182,7 +183,7 @@ function ContactLink({ label, value, href, bubble, icon, external = false }: { l
       href={href}
       data-bubble={bubble}
       {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-      className="group flex items-center gap-4 rounded-3xl border border-fg/10 bg-surface/60 p-6 backdrop-blur-md transition-colors hover:border-accent/50"
+      className="group flex min-w-0 items-center gap-4 rounded-3xl border border-fg/10 bg-surface/60 p-5 backdrop-blur-md transition-colors hover:border-accent/50 sm:p-6"
     >
       <span className="grid size-12 shrink-0 place-items-center rounded-2xl border border-fg/10 bg-bg/60 text-accent transition-colors group-hover:bg-accent group-hover:text-bg">{icon}</span>
       <span className="min-w-0">

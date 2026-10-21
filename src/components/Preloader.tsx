@@ -9,7 +9,7 @@ import { gsap, lenis, prefersReducedMotion, ScrollTrigger } from '../lib/motion'
 //    et le nom qui change de couleur quand la barre passe dessous (Capsule utilise mix-blend-mode: difference ;
 //    sur du turquoise ça donnerait du rouge, donc ici une copie sombre du nom est découpée au bord de la barre)
 //  - lettres x 100 % → 0 % (stagger 0.05, 1 s, "power4.inOut"), lignes du bas y 100 % → 0 % (stagger 0.1)
-//  - sortie : lettres x → -100 %, lignes y → -100 %, barre opacity 0 (0.7 s),
+//  - sortie : le nom est « aspiré » (grossit, se floute, s'efface), lignes y → -100 %, barre opacity 0 (0.7 s),
 //    puis la gélule grandit (scale 6, 4 s, "power3.out") et laisse apparaître le site
 const BAR_DURATION = 3.5
 const SCENE_WAIT_MAX = 1500 // ms d'attente max pour la 3D une fois l'animation finie
@@ -69,24 +69,21 @@ export function Preloader() {
         if (cancelled) return
         ctx.add(() => {
           gsap
-            .timeline({
-              onComplete: () => {
-                lenis.start()
-                setDone(true)
-              },
-            })
-            .to('[data-char]', { x: '-100%', stagger: 0.05, duration: 1, ease: 'power4.inOut' }, '+=0.15')
-            .to('[data-line]', { y: '-100%', stagger: 0.1, duration: 0.5, ease: 'power4.inOut' }, '-=0.1')
-            .to('[data-progress]', { opacity: 0, duration: 0.7, ease: 'power3.out' }, '<')
+            .timeline({ onComplete: () => setDone(true) })
+            // Sortie « aspirée » : le nom grossit, se floute et s'efface pendant que la gélule s'ouvre,
+            // comme si on plongeait à travers (annonce la plongée dans l'écran)
+            .to('[data-name]', { scale: 3.2, filter: 'blur(14px)', opacity: 0, duration: 1.1, ease: 'power3.in' }, '+=0.15')
+            .to('[data-line]', { y: '-100%', stagger: 0.1, duration: 0.5, ease: 'power4.inOut' }, '<')
+            .to('[data-progress]', { opacity: 0, duration: 0.7, ease: 'power3.out' }, '<+=0.5')
             .to('[data-mask]', { scale: 6, duration: 4, ease: 'power3.out' }, '<')
-            // L'arrivée de la caméra démarre pendant que la gélule s'ouvre
-            // Positions recalculées (page complète) juste avant de lancer l'intro
+            // L'intro démarre et le scroll est rendu dès que la gélule s'ouvre (pas à la fin de l'animation)
             .add(() => {
               ScrollTrigger.refresh()
+              lenis.start()
               startIntro()
+              if (rootRef.current) rootRef.current.style.pointerEvents = 'none'
             }, '<')
             .to('[data-mask]', { opacity: 0, duration: 1 }, '<+=1')
-            .set(rootRef.current, { pointerEvents: 'none' }, '<')
         })
       })
     }, rootRef)
@@ -135,7 +132,7 @@ export function Preloader() {
 // Le nom, lettre par lettre dans des masques (comme le "mask" de SplitText chez Capsule)
 function NameLayer({ name, className, style, ref }: { name: string; className: string; style?: CSSProperties; ref?: Ref<HTMLDivElement> }) {
   return (
-    <div ref={ref} className={`absolute inset-0 grid place-items-center ${className}`} style={style} aria-hidden>
+    <div ref={ref} data-name className={`absolute inset-0 grid place-items-center will-change-transform ${className}`} style={style} aria-hidden>
       <div className="flex font-display text-[clamp(1.6rem,3.4vw,3.2rem)] leading-none font-bold tracking-tight">
         {[...name].map((char, i) => (
           <span key={i} className="inline-block overflow-clip whitespace-pre">

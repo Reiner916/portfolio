@@ -4,7 +4,8 @@ import { prefersReducedMotion } from '../lib/motion'
 import { isLite, onLiteChange } from '../lib/quality'
 
 const VERTEX = `attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }`
-const FRAGMENT = `precision highp float;\n${backgroundGlsl}\nvoid main() { gl_FragColor = vec4(siteBackground(gl_FragCoord.xy), 1.0); }`
+// Haute précision si la puce la propose, sinon précision moyenne (au lieu d'un échec de compilation)
+const FRAGMENT = `#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n${backgroundGlsl}\nvoid main() { gl_FragColor = vec4(siteBackground(gl_FragCoord.xy), 1.0); }`
 
 function compile(gl: WebGLRenderingContext, type: number, source: string) {
   const shader = gl.createShader(type)!

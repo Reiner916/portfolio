@@ -18,9 +18,11 @@ export function Projects() {
         // Rotation au scroll — code et valeurs de Codrops (Rotating On-Scroll Animations, démo 1) :
         // orientation de départ aléatoire (rotationX 70→120, rotationY/Z ±20), arrivée à l'opposé,
         // scrub, de "top bottom+=20%" à "bottom top-=20%", et une profondeur z = sin(progression·π)·-50
-        const rotationX = gsap.utils.random(70, 120)
-        const rotationY = gsap.utils.random(-20, 20)
-        const rotationZ = gsap.utils.random(-20, 20)
+        // Sur mobile, l'image occupe tout l'écran : rotations nettement adoucies pour qu'elle ne se mette jamais de profil
+        const mobile = window.matchMedia('(max-width: 768px)').matches
+        const rotationX = mobile ? gsap.utils.random(18, 26) : gsap.utils.random(70, 120)
+        const rotationY = mobile ? gsap.utils.random(-6, 6) : gsap.utils.random(-20, 20)
+        const rotationZ = mobile ? gsap.utils.random(-4, 4) : gsap.utils.random(-20, 20)
         const setZ = gsap.quickSetter(visual, 'z', 'px')
         gsap.fromTo(
           visual,
@@ -55,7 +57,8 @@ export function Projects() {
           gsap.to(wipe, {
             x: 0,
             ease: 'power1.inOut',
-            scrollTrigger: { trigger: row, start: 'top 45%', end: 'bottom 55%', scrub: 1 },
+            // Piloté par l'image elle-même : le balayage démarre quand elle entre à l'écran, quelle que soit la taille du texte au-dessus
+            scrollTrigger: { trigger: visual, start: 'top 80%', end: 'bottom 30%', scrub: 1 },
             onUpdate: () => {
               day.style.clipPath = `inset(0 0 0 ${wipe.x}%)`
               line.style.left = `${wipe.x}%`
