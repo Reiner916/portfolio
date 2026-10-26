@@ -10,7 +10,7 @@ import { gsap, prefersReducedMotion } from '../lib/motion'
 // Couleur du badge selon le niveau (repère visuel immédiat, comme Easy / Medium / Hard chez Capsule)
 const levelStyle = {
   1: 'border-fg/15 text-muted',
-  2: 'border-fg/20 text-fg/80',
+  2: 'border-fg/20 text-fg/90',
   3: 'border-accent-2/50 bg-accent-2/10 text-accent-2',
   4: 'border-accent/50 bg-accent/10 text-accent',
   5: 'border-accent bg-accent text-bg',
@@ -91,7 +91,7 @@ export function Skills() {
                   </div>
                   <ul className="flex flex-wrap gap-2">
                     {items.map((item, i) => (
-                      <li key={item} className="relative overflow-hidden rounded-full border border-fg/10 bg-bg/50 px-3 py-1.5 text-sm text-fg/85">
+                      <li key={item} className="relative overflow-hidden rounded-full border border-fg/10 bg-bg/50 px-3 py-1.5 text-sm text-fg/90">
                         {/* Reflet qui passe en boucle : "en cours de chargement" */}
                         <span
                           aria-hidden

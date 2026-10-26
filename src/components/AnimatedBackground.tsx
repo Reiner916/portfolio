@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { backgroundGlsl, cssColorVec3, sharedTime, SHARED_DPR } from '../lib/backgroundShader'
-import { prefersReducedMotion } from '../lib/motion'
+import { gsap, prefersReducedMotion } from '../lib/motion'
 import { isLite, onLiteChange } from '../lib/quality'
 
 const VERTEX = `attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }`
@@ -18,6 +18,18 @@ function compile(gl: WebGLRenderingContext, type: number, source: string) {
 // Fond animé fixe derrière tout le site (WebGL, un seul quad plein écran).
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const scrimRef = useRef<HTMLDivElement>(null)
+
+  // Voile sombre (45 %) qui s'installe juste après l'intro, pour que les textes restent lisibles sur les volutes claires.
+  // Il n'existe pas pendant l'intro : l'écran 3D montre le fond tel quel.
+  useLayoutEffect(() => {
+    const tween = gsap.fromTo(
+      scrimRef.current,
+      { opacity: 0 },
+      { opacity: 1, ease: 'none', scrollTrigger: { trigger: '#about', start: 'top 50%', end: 'top top', scrub: true } },
+    )
+    return () => void tween.scrollTrigger?.kill()
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current!
@@ -83,5 +95,10 @@ export function AnimatedBackground() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} aria-hidden className="fixed inset-0 -z-10 h-full w-full" />
+  return (
+    <>
+      <canvas ref={canvasRef} aria-hidden className="fixed inset-0 -z-10 h-full w-full" />
+      <div ref={scrimRef} aria-hidden className="pointer-events-none fixed inset-0 -z-[9] bg-bg/45 opacity-0" />
+    </>
+  )
 }

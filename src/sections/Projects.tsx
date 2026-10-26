@@ -128,13 +128,13 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
         <h3 data-reveal className="mt-6 font-display text-3xl leading-tight font-bold text-fg sm:text-4xl">
           {t(`${base}.title`)}
         </h3>
-        <p data-reveal className="mt-4 leading-relaxed text-fg/75">
+        <p data-reveal className="mt-4 leading-relaxed text-fg/90">
           {t(`${base}.summary`)}
         </p>
 
         <ul className="mt-6 flex flex-col gap-2">
           {points.map((point) => (
-            <li key={point} data-reveal className="flex items-center gap-3 text-sm text-fg/85">
+            <li key={point} data-reveal className="flex items-center gap-3 text-sm text-fg/90">
               <span className="grid size-5 shrink-0 place-items-center rounded-full bg-accent/15 text-accent" aria-hidden>
                 <svg viewBox="0 0 12 12" className="size-3">
                   <path d="m2.5 6.5 2.2 2L9.5 3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -147,7 +147,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 
         <div data-reveal className="mt-6 flex flex-wrap gap-2" aria-label={t('projects.stack')}>
           {project.stack.map((tech) => (
-            <span key={tech} className="rounded-full border border-fg/10 bg-surface/60 px-3 py-1 font-mono text-xs text-fg/80">
+            <span key={tech} className="rounded-full border border-fg/10 bg-surface/60 px-3 py-1 font-mono text-xs text-fg/90">
               {tech}
             </span>
           ))}

@@ -47,7 +47,7 @@ export function Resume() {
       <div className="grid items-center gap-16 lg:grid-cols-[1fr_0.9fr]">
         <div>
           <SectionTitle eyebrow={t('resume.eyebrow')} title={t('resume.title')} />
-          <p data-cv-reveal className="mt-8 max-w-md text-lg leading-relaxed text-fg/75">
+          <p data-cv-reveal className="mt-8 max-w-md text-lg leading-relaxed text-fg/90">
             {t('resume.text')}
           </p>
           <div data-cv-reveal className="mt-10 flex flex-wrap gap-3">

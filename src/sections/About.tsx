@@ -117,7 +117,7 @@ function TrainingCard() {
         <path d="M42 20v10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
       <p className="mt-auto pt-8 font-display text-4xl font-bold text-fg">{t('about.training.title')}</p>
-      <p className="mt-1 text-sm text-fg/80">{t('about.training.detail')}</p>
+      <p className="mt-1 text-sm text-fg/90">{t('about.training.detail')}</p>
       <p className="mt-1 font-mono text-xs text-muted">{t('about.training.since')}</p>
     </SpotlightCard>
   )

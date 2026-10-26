@@ -89,7 +89,7 @@ export function Contact() {
             </span>
           ))}
         </h2>
-        <p className="mt-8 max-w-xl text-lg leading-relaxed text-fg/75">{t('contact.text')}</p>
+        <p className="mt-8 max-w-xl text-lg leading-relaxed text-fg/90">{t('contact.text')}</p>
 
         {/* minmax(0, 1fr) : une colonne qui ne dépasse jamais l'écran, même avec une longue adresse e-mail */}
         <div data-contact-list className="mt-16 grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-3">

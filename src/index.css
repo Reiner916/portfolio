@@ -9,7 +9,8 @@
   --c-accent: #2dd4bf;
   --c-accent-2: #38bdf8;
   --c-fg: #e6f2f3;
-  --c-muted: #7f969c;
+  /* gris éclairci (était #7f969c) : lisible même sur les volutes claires du fond */
+  --c-muted: #afc2c7;
 }
 
 [data-palette="indigo"] {

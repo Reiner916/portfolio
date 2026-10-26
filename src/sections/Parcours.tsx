@@ -56,7 +56,7 @@ export function Parcours() {
             <li key={key} data-other className="grid gap-1 px-5 py-3 text-sm sm:grid-cols-[8rem_1fr] sm:gap-6">
               <span className="font-mono text-xs text-muted sm:pt-0.5">{t(`parcours.other.${key}.date`)}</span>
               <span>
-                <span className="text-fg/80">{t(`parcours.other.${key}.role`)}</span>
+                <span className="text-fg/90">{t(`parcours.other.${key}.role`)}</span>
                 <span className="text-muted"> · {t(`parcours.other.${key}.detail`)}</span>
               </span>
             </li>
@@ -95,7 +95,7 @@ function Timeline({ title, items }: { title: string; items: ParcoursItem[] }) {
                 <p className="mt-1 text-sm text-muted">{t(`${base}.place`)}</p>
                 <ul className="mt-4 flex flex-col gap-2">
                   {points.map((point) => (
-                    <li key={point} className="flex gap-3 text-sm leading-relaxed text-fg/75">
+                    <li key={point} className="flex gap-3 text-sm leading-relaxed text-fg/90">
                       <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-accent-2" />
                       {point}
                     </li>
@@ -104,7 +104,7 @@ function Timeline({ title, items }: { title: string; items: ParcoursItem[] }) {
                 {tags.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
                     {tags.map((tag) => (
-                      <span key={tag} className="rounded-full border border-fg/10 bg-surface/60 px-2.5 py-0.5 font-mono text-[11px] text-fg/70">
+                      <span key={tag} className="rounded-full border border-fg/10 bg-surface/60 px-2.5 py-0.5 font-mono text-[11px] text-fg/90">
                         {tag}
                       </span>
                     ))}
