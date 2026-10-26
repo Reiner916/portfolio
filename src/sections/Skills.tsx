@@ -74,20 +74,38 @@ export function Skills() {
         ))}
 
         <div>
-          <h3 className="mb-6 font-display text-2xl font-semibold text-fg">{t('skills.groups.learning')}</h3>
-          <ul data-learning-list className="flex flex-wrap gap-3">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <li key={i} data-learning className="relative overflow-hidden rounded-full border border-dashed border-accent-2/50 px-5 py-2.5 font-mono text-sm text-fg/85">
-                {/* Reflet qui passe en boucle : "en cours de chargement" */}
-                <span
-                  aria-hidden
-                  className="absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-accent-2/25 to-transparent"
-                  style={{ animation: `shimmer 2.8s ease-in-out ${i * 0.3}s infinite` }}
-                />
-                <span className="relative">{t(`skills.learning.${i}`)}</span>
-              </li>
-            ))}
-          </ul>
+          <h3 className="font-display text-2xl font-semibold text-fg">{t('skills.groups.learning')}</h3>
+          <p className="mt-2 mb-6 font-mono text-xs text-muted">{t('skills.learning.context')}</p>
+          {/* Programme du BTS SIO (3 blocs du référentiel), en 3 groupes */}
+          <div data-learning-list className="grid gap-4 md:grid-cols-3">
+            {[0, 1, 2].map((g) => {
+              const base = `skills.learning.groups.${g}`
+              const items = Array.from({ length: 10 }, (_, i) => t(`${base}.items.${i}`)).filter((item) => !item.startsWith(base))
+              return (
+                <div key={g} data-learning className="rounded-3xl border border-dashed border-accent-2/40 bg-surface/40 p-5 backdrop-blur-sm sm:p-6">
+                  <div className="mb-4 flex items-center justify-between gap-3">
+                    <p className="font-display text-lg font-semibold text-fg">{t(`${base}.title`)}</p>
+                    <span className="rounded-full border border-accent-2/40 bg-accent-2/10 px-2.5 py-0.5 font-mono text-[11px] whitespace-nowrap text-accent-2">
+                      {t('skills.learning.tag')}
+                    </span>
+                  </div>
+                  <ul className="flex flex-wrap gap-2">
+                    {items.map((item, i) => (
+                      <li key={item} className="relative overflow-hidden rounded-full border border-fg/10 bg-bg/50 px-3 py-1.5 text-sm text-fg/85">
+                        {/* Reflet qui passe en boucle : "en cours de chargement" */}
+                        <span
+                          aria-hidden
+                          className="absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-accent-2/20 to-transparent"
+                          style={{ animation: `shimmer 3.2s ease-in-out ${(g * 6 + i) * 0.25}s infinite` }}
+                        />
+                        <span className="relative">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

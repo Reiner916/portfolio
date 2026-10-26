@@ -35,7 +35,7 @@ src/
 ├── data/         Contenu (compétences, projets, parcours, coordonnées)
 ├── i18n/         Textes en français et en anglais
 └── lib/          Scroll fluide, chargement, mode léger, fond animé
-cv/               Source HTML du CV et script qui génère le PDF
+public/cv/        CV en PDF (+ aperçus générés à partir du PDF)
 og/               Source de l'image d'aperçu de partage
 ```
 

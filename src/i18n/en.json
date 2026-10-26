@@ -20,7 +20,7 @@
   "intro": {
     "hello": "Hi, I'm",
     "name": "Amir Chouchane",
-    "role": "Work-study · Development & IT Support",
+    "role": "Work-study · Support, networking & web development",
     "status": "Looking for a work-study position · 2 days / 3 days",
     "hintDown": "Scroll down to enter the screen",
     "hintUp": "Or scroll up to see the whole desk"
@@ -49,7 +49,7 @@
       "label": "Education",
       "title": "BTS SIO",
       "detail": "CFA ITIS, Évry-Courcouronnes",
-      "since": "Since September 2026"
+      "since": "2026 – 2028, work-study"
     },
     "mobility": {
       "label": "Location",
@@ -109,8 +109,8 @@
         "detail": "A complete website designed and built on my own: categories, internal search, usability."
       },
       "htmlcss": {
-        "name": "HTML / CSS",
-        "detail": "The fundamentals of web integration."
+        "name": "HTML / CSS · JavaScript",
+        "detail": "The fundamentals of web integration and interactivity."
       },
       "scripts": {
         "name": "Automation scripts",
@@ -121,13 +121,45 @@
         "detail": "Simple queries and database structure."
       }
     },
-    "learning": [
-      "Networking & Wi-Fi",
-      "IP telephony",
-      "Linux",
-      "Cybersecurity",
-      "Managed IT services"
-    ]
+    "learning": {
+      "context": "1st year · shared core: networking and development",
+      "tag": "In progress",
+      "groups": [
+        {
+          "title": "Development",
+          "items": [
+            "PHP",
+            "Python",
+            "Java (object-oriented programming)",
+            "SQL and databases",
+            "HTML / CSS · JavaScript",
+            "Algorithms"
+          ]
+        },
+        {
+          "title": "Networking and systems",
+          "items": [
+            "TCP/IP, IP addressing and subnetting",
+            "DNS · DHCP",
+            "VPN",
+            "Wi-Fi · IP telephony",
+            "Linux",
+            "Monitoring and troubleshooting a network infrastructure"
+          ]
+        },
+        {
+          "title": "Support, services and security",
+          "items": [
+            "IT asset management",
+            "Incident and request management (tickets)",
+            "Cybersecurity: availability, integrity, confidentiality",
+            "Data protection (GDPR)",
+            "Securing workstations and accounts",
+            "Managed IT services · project work"
+          ]
+        }
+      ]
+    }
   },
   "projects": {
     "eyebrow": "Projects",
@@ -196,26 +228,24 @@
       "devAssistant": {
         "date": "Jan. – Aug. 2026",
         "role": "Developer assistant",
-        "place": "Collaborative project · multiplayer game server",
+        "place": "Collaborative project · multiplayer game server, with a developer, a community manager and designers",
         "points": [
-          "Feature testing, bug reproduction and structured reporting to the developer",
-          "Involved in feature decisions and suggested scripts to integrate",
-          "Video editing and support for the project's communication"
+          "Release testing: testing, reproducing and documenting bugs, follow-up until fixed",
+          "Involved in feature decisions and suggested scripts to integrate"
         ],
         "tags": [
           "QA",
           "Testing",
-          "Video editing"
+          "Documentation"
         ]
       },
       "support": {
         "date": "2024 – 2025",
         "role": "User support and moderation",
-        "place": "Multiplayer game server (FiveM) · up to 500 connected players",
+        "place": "Online gaming platform (FiveM) · up to 500 connected users",
         "points": [
-          "Handling requests through a ticketing system: assistance, diagnosis, dispute resolution",
-          "Enforcing the rules, mediating conflicts, running events",
-          "On-call duty with variable hours, including evenings and weekends"
+          "Handling requests through tickets: assistance, diagnosis, resolution and follow-up",
+          "Managing member access and permissions, reporting incidents; on-call in evenings and at weekends"
         ],
         "tags": [
           "Tickets",
@@ -225,11 +255,11 @@
       },
       "selfTaught": {
         "date": "Ongoing",
-        "role": "Self-taught practice",
-        "place": "OpenClassrooms and personal projects",
+        "role": "IT troubleshooting and support for family and friends",
+        "place": "Self-taught",
         "points": [
-          "OpenClassrooms courses: HTML and CSS fundamentals",
-          "Troubleshooting and supporting family members' computers, on site and remotely",
+          "Installing, repairing and building PCs (RAM, NVMe SSD), on-site or remote troubleshooting",
+          "Self-training: OpenClassrooms courses (HTML and CSS fundamentals)",
           "Scripts to automate everyday tasks"
         ],
         "tags": [
@@ -239,11 +269,11 @@
         ]
       },
       "bts": {
-        "date": "Since Sept. 2026",
+        "date": "2026 – 2028",
         "role": "BTS in IT Services for Organisations (SIO)",
         "place": "Work-study · CFA ITIS, Évry-Courcouronnes",
         "points": [
-          "Curriculum: networking and Wi-Fi, IP telephony, Linux, cybersecurity, managed IT services"
+          "Curriculum: development (PHP, Python, Java, SQL), networking and systems (TCP/IP, DNS, DHCP, VPN, Linux), support and cybersecurity"
         ]
       },
       "mco": {

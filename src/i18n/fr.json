@@ -20,7 +20,7 @@
   "intro": {
     "hello": "Bonjour, je suis",
     "name": "Amir Chouchane",
-    "role": "Alternance · Développement & Support IT",
+    "role": "Alternance · Support, réseau & développement web",
     "status": "Recherche une alternance · rythme 2 j / 3 j",
     "hintDown": "Fais défiler vers le bas pour entrer dans l'écran",
     "hintUp": "Ou remonte pour découvrir tout le bureau"
@@ -49,7 +49,7 @@
       "label": "Formation",
       "title": "BTS SIO",
       "detail": "CFA ITIS, Évry-Courcouronnes",
-      "since": "Depuis septembre 2026"
+      "since": "2026 – 2028, en apprentissage"
     },
     "mobility": {
       "label": "Mobilité",
@@ -109,8 +109,8 @@
         "detail": "Un site complet conçu et développé seul : catégories, recherche interne, ergonomie."
       },
       "htmlcss": {
-        "name": "HTML / CSS",
-        "detail": "Les bases de l'intégration web."
+        "name": "HTML / CSS · JavaScript",
+        "detail": "Les bases de l'intégration web et de l'interactivité."
       },
       "scripts": {
         "name": "Scripts d'automatisation",
@@ -121,13 +121,45 @@
         "detail": "Requêtes simples et structure d'une base."
       }
     },
-    "learning": [
-      "Réseaux & Wi-Fi",
-      "Téléphonie IP",
-      "Linux",
-      "Cybersécurité",
-      "Infogérance"
-    ]
+    "learning": {
+      "context": "1re année · tronc commun réseau et développement",
+      "tag": "En cours",
+      "groups": [
+        {
+          "title": "Développement",
+          "items": [
+            "PHP",
+            "Python",
+            "Java (programmation objet)",
+            "SQL et bases de données",
+            "HTML / CSS · JavaScript",
+            "Algorithmique"
+          ]
+        },
+        {
+          "title": "Réseau et systèmes",
+          "items": [
+            "TCP/IP, adressage IP et sous-réseaux",
+            "DNS · DHCP",
+            "VPN",
+            "Wi-Fi · téléphonie IP",
+            "Linux",
+            "Supervision et dépannage d'une infrastructure réseau"
+          ]
+        },
+        {
+          "title": "Support, services et sécurité",
+          "items": [
+            "Gestion du parc informatique",
+            "Gestion des incidents et des demandes (tickets)",
+            "Cybersécurité : disponibilité, intégrité, confidentialité",
+            "Protection des données (RGPD)",
+            "Sécurisation des postes et des comptes",
+            "Infogérance · travail en mode projet"
+          ]
+        }
+      ]
+    }
   },
   "projects": {
     "eyebrow": "Projets",
@@ -196,26 +228,24 @@
       "devAssistant": {
         "date": "Janv. – août 2026",
         "role": "Assistant développeur",
-        "place": "Projet collaboratif · serveur de jeu multijoueur",
+        "place": "Projet collaboratif · serveur de jeu multijoueur, avec un développeur, un community manager et des graphistes",
         "points": [
-          "Tests des fonctionnalités, reproduction des anomalies et remontée structurée au développeur",
-          "Participation aux choix de fonctionnalités et propositions de scripts à intégrer",
-          "Montage vidéo et appui à la communication du projet"
+          "Recette des nouvelles versions : tests, reproduction et documentation des anomalies, suivi jusqu'à la correction",
+          "Participation aux choix de fonctionnalités et propositions de scripts à intégrer"
         ],
         "tags": [
           "Recette",
           "Tests",
-          "Montage vidéo"
+          "Documentation"
         ]
       },
       "support": {
         "date": "2024 – 2025",
-        "role": "Support utilisateur et modération",
-        "place": "Serveur de jeu multijoueur (FiveM) · jusqu'à 500 joueurs connectés",
+        "role": "Support utilisateurs et modération",
+        "place": "Plateforme de jeu en ligne (FiveM) · jusqu'à 500 utilisateurs connectés",
         "points": [
-          "Traitement des demandes via un système de tickets : assistance, diagnostic, résolution de litiges",
-          "Application du règlement, arbitrage de situations conflictuelles, animation d'événements",
-          "Astreintes en horaires variables, soirées et week-ends compris"
+          "Traitement des demandes par tickets : assistance, diagnostic, résolution et suivi",
+          "Gestion des accès et des droits des membres, signalement des incidents ; astreintes en soirée et le week-end"
         ],
         "tags": [
           "Tickets",
@@ -225,11 +255,11 @@
       },
       "selfTaught": {
         "date": "En continu",
-        "role": "Pratique personnelle, en autodidacte",
-        "place": "OpenClassrooms et projets perso",
+        "role": "Dépannage et assistance informatique de l'entourage",
+        "place": "En autodidacte",
         "points": [
-          "Cours OpenClassrooms : bases du HTML et du CSS",
-          "Dépannage et assistance des postes de l'entourage, sur place et à distance",
+          "Installation, remise en état et montage de PC (RAM, SSD NVMe), dépannage sur place ou à distance",
+          "Autoformation : cours OpenClassrooms (bases HTML et CSS)",
           "Scripts pour automatiser des tâches du quotidien"
         ],
         "tags": [
@@ -239,11 +269,11 @@
         ]
       },
       "bts": {
-        "date": "Depuis sept. 2026",
+        "date": "2026 – 2028",
         "role": "BTS Services Informatiques aux Organisations",
         "place": "En alternance · CFA ITIS, Évry-Courcouronnes",
         "points": [
-          "Au programme : réseaux et Wi-Fi, téléphonie IP, Linux, cybersécurité, infogérance"
+          "Au programme : développement (PHP, Python, Java, SQL), réseau et systèmes (TCP/IP, DNS, DHCP, VPN, Linux), support et cybersécurité"
         ]
       },
       "mco": {

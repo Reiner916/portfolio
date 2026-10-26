@@ -28,6 +28,6 @@ export const skillGroups: { key: 'support' | 'dev'; skills: Skill[] }[] = [
 
 // Défilé des technos (noms propres, non traduits)
 export const marqueeTechs = [
-  'Windows', 'Next.js', 'React', 'HTML', 'CSS', 'SQL', 'TeamViewer', 'Parsec',
+  'Windows', 'Next.js', 'React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'SQL', 'GitHub', 'Vercel', 'TeamViewer', 'Parsec',
   'Microsoft 365', 'Outlook', 'Teams', 'Google Workspace', 'SSD NVMe', 'Tickets',
 ]
