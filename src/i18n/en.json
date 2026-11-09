@@ -188,6 +188,26 @@
           "Confirmation before deleting, runs with a double-click",
           "And other scripts of the same kind for repetitive tasks"
         ]
+      },
+      "bot7ds": {
+        "title": "Computer-vision game bot",
+        "summary": "Personal Python project: a bot that plays the story mode of 7DS Grand Cross on its own by reading the screen like a player. I trained a YOLO detector to recognise buttons, quest bubbles and menus, then coded the logic that decides and clicks.",
+        "points": [
+          "YOLO11n detector trained on 15 element types (0.99 mAP50), exported to ONNX",
+          "Record session: 8 h 53 unattended, 117 wins",
+          "Improvement loop: every stuck screen is used to retrain the model, behind a guard-rail",
+          "Honest about its limits: about 90–95% of story mode automated"
+        ],
+        "steps": [
+          "Resumes the quest from the journal",
+          "Finds the quest bubble and clicks",
+          "Skips dialogues",
+          "Builds the team automatically",
+          "Battle: the bot waits",
+          "Victory: confirms and moves on",
+          "Closes rewards… and starts again"
+        ],
+        "hud": "detection 0.1 s"
       }
     },
     "mock": {

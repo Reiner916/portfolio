@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { useI18n } from '../../i18n/I18nProvider'
-import { cleanerTerminal } from '../../data/projects'
+import { botSteps, cleanerTerminal } from '../../data/projects'
 import { prefersReducedMotion } from '../../lib/motion'
 
 // Maquettes animées affichées tant qu'il n'y a pas de vraie capture du projet.
@@ -194,6 +194,67 @@ export function TerminalMock() {
         {step < lines.length && <span className="inline-block h-4 w-2 translate-y-0.5 bg-fg/70" style={{ animation: 'blink 1s steps(1) infinite' }} />}
         <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-fg/10">
           <div className="h-full origin-left rounded-full bg-accent transition-transform duration-700" style={{ transform: `scaleX(${progress})` }} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Bot 7DS : les vraies étapes vues par le bot, en fondu, avec un HUD de détection
+export function VisionMock() {
+  const { t } = useI18n()
+  const [ref, inView] = useInView<HTMLDivElement>()
+  const tick = useTicker(inView, 2600)
+  const step = prefersReducedMotion ? 1 : tick % botSteps.length
+
+  return (
+    <div ref={ref} className="overflow-hidden rounded-2xl border border-fg/10 bg-[#05080a] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]">
+      <div className="flex items-center gap-2 border-b border-fg/10 bg-surface px-4 py-3">
+        {[0, 1, 2].map((i) => (
+          <span key={i} className="size-2.5 rounded-full bg-fg/20" />
+        ))}
+        <span className="ml-3 font-mono text-[11px] text-muted">bot_7ds.py · 7DS Grand Cross</span>
+        <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-accent">
+          <span className="size-1.5 rounded-full bg-accent" style={{ animation: 'blink 1.2s steps(1) infinite' }} />
+          REC
+        </span>
+      </div>
+
+      <div className="relative aspect-[960/500] overflow-hidden">
+        {botSteps.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={i === step ? t(`projects.items.bot7ds.steps.${i}`) : ''}
+            loading="lazy"
+            width={960}
+            height={500}
+            className="absolute inset-0 size-full object-cover transition-opacity duration-700"
+            style={{ opacity: i === step ? 1 : 0 }}
+          />
+        ))}
+
+        {/* Coins de visée, façon cadre de détection */}
+        <div className="pointer-events-none absolute inset-3 sm:inset-4">
+          {['top-0 left-0 border-t-2 border-l-2', 'top-0 right-0 border-t-2 border-r-2', 'bottom-0 left-0 border-b-2 border-l-2', 'bottom-0 right-0 border-b-2 border-r-2'].map((c) => (
+            <span key={c} className={`absolute size-5 border-accent/80 ${c}`} />
+          ))}
+        </div>
+
+        <span className="absolute top-5 right-5 rounded-full border border-accent/40 bg-black/65 px-2.5 py-1 font-mono text-[10px] text-accent backdrop-blur sm:top-6 sm:right-6">
+          YOLO11n · {t('projects.items.bot7ds.hud')}
+        </span>
+
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-5 pt-10 pb-4 sm:px-6">
+          <p className="flex items-baseline gap-3 font-mono text-xs text-white sm:text-sm">
+            <span className="text-accent">{String(step + 1).padStart(2, '0')}/{String(botSteps.length).padStart(2, '0')}</span>
+            <span key={step} style={{ animation: 'fadeUp .5s ease both' }}>{t(`projects.items.bot7ds.steps.${step}`)}</span>
+          </p>
+          <div className="mt-3 flex gap-1.5">
+            {botSteps.map((src, i) => (
+              <span key={src} className={`h-1 flex-1 rounded-full transition-colors duration-500 ${i <= step ? 'bg-accent' : 'bg-white/20'}`} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

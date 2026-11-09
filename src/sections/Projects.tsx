@@ -3,7 +3,7 @@ import { projects, type Project } from '../data/projects'
 import { SectionTitle } from '../components/SectionTitle'
 import { useI18n } from '../i18n/I18nProvider'
 import { gsap, prefersReducedMotion } from '../lib/motion'
-import { DirectoryMock, Screenshots, TerminalMock } from './projects/Mockups'
+import { DirectoryMock, Screenshots, TerminalMock, VisionMock } from './projects/Mockups'
 
 export function Projects() {
   const { t } = useI18n()
@@ -167,6 +167,8 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
           <Screenshots shots={project.shots} alt={`${t('projects.shot')} · ${t(`${base}.title`)}`} />
         ) : project.visual === 'browser' ? (
           <DirectoryMock />
+        ) : project.visual === 'vision' ? (
+          <VisionMock />
         ) : (
           <TerminalMock />
         )}

@@ -188,6 +188,26 @@
           "Confirmation avant suppression, lancement en un double-clic",
           "Et d'autres scripts du même type pour les tâches répétitives"
         ]
+      },
+      "bot7ds": {
+        "title": "Bot de jeu par vision par ordinateur",
+        "summary": "Projet perso en Python : un bot qui joue seul au mode histoire de 7DS Grand Cross en regardant l'écran comme un joueur. J'ai entraîné un détecteur YOLO pour reconnaître boutons, bulles de quête et menus, puis codé la logique qui décide et clique.",
+        "points": [
+          "Détecteur YOLO11n entraîné sur 15 types d'éléments (fiabilité 0,99), exporté en ONNX",
+          "Session record : 8 h 53 sans intervention, 117 victoires",
+          "Boucle d'amélioration : chaque blocage sert à réentraîner le modèle, avec un garde-fou",
+          "Honnête sur ses limites : environ 90 à 95 % du mode histoire automatisé"
+        ],
+        "steps": [
+          "Relance la quête depuis le journal",
+          "Repère la bulle de quête et clique",
+          "Passe les dialogues",
+          "Compose l'équipe automatiquement",
+          "Combat : le bot patiente",
+          "Victoire : valide et enchaîne",
+          "Ferme les récompenses… et recommence"
+        ],
+        "hud": "détection 0,1 s"
       }
     },
     "mock": {
