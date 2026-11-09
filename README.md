@@ -63,6 +63,7 @@ src/
 ├── i18n/         🌍 Textes en français et en anglais
 └── lib/          ⚙️ Scroll fluide, chargement, mode léger, fond animé
 public/           🖼️ CV en PDF, captures des projets, image de partage
+og/               🪧 Source de l'image de partage
 docs/             🎨 Bannière du README
 ```
 
