@@ -20,36 +20,21 @@
   "intro": {
     "hello": "Hi, I'm",
     "name": "Amir Chouchane",
-    "role": "Work-study · Support, networking & web development",
-    "status": "Looking for a work-study position · 2 days / 3 days",
+    "role": "IT work-study · Support, networking & web development",
+    "status": "Work-study programme, 2 to 3 years after A-levels · Available now",
     "hintDown": "Scroll down to enter the screen",
     "hintUp": "Or scroll up to see the whole desk"
   },
   "about": {
     "eyebrow": "About",
     "title": "Welcome to the other side of the screen.",
-    "text": "My name is Amir. Passionate about IT, I switched to this field after a first year of a business degree, and I'm now studying for a BTS SIO (IT services) at CFA ITIS in Évry-Courcouronnes. In my free time, I build websites with Next.js and React, and I write scripts to automate repetitive tasks. I enjoy field work just as much: upgrading, installing, configuring and troubleshooting workstations. And above all, helping others, whether they are users or people close to me.",
+    "text": "My name is Amir. Passionate about IT, I switched to this field after a first year of a business degree. I'm now looking for a company to host my IT work-study, in support, networking or web development: the programme starts as soon as the contract is signed. In my free time, I build websites with Next.js and React, and I write scripts to automate repetitive tasks. I enjoy field work just as much: upgrading, installing, configuring and troubleshooting workstations. And above all, helping others, whether they are users or people close to me.",
     "status": "Available for a work-study position",
-    "rhythm": {
-      "label": "Work-study schedule",
-      "title": "3 days at the company, 2 days at school",
-      "detail": "Wednesday alternates from one week to the next.",
-      "week": "Week",
-      "days": [
-        "Mon",
-        "Tue",
-        "Wed",
-        "Thu",
-        "Fri"
-      ],
-      "company": "Company",
-      "school": "School"
-    },
     "training": {
       "label": "Education",
-      "title": "BTS SIO",
-      "detail": "CFA ITIS, Évry-Courcouronnes",
-      "since": "2026 – 2028, work-study"
+      "title": "Bac+2 / Bac+3",
+      "detail": "IT work-study programme",
+      "since": "Starts when the contract is signed"
     },
     "mobility": {
       "label": "Location",
@@ -71,7 +56,7 @@
     "groups": {
       "support": "Support & hardware",
       "dev": "Development",
-      "learning": "Currently learning · BTS SIO"
+      "learning": "Basics, deepened during training"
     },
     "levels": [
       "Discovery",
@@ -122,7 +107,7 @@
       }
     },
     "learning": {
-      "context": "1st year · shared core: networking and development",
+      "context": "Networking, development and support",
       "tag": "In progress",
       "groups": [
         {
@@ -289,9 +274,9 @@
         ]
       },
       "bts": {
-        "date": "2026 – 2028",
-        "role": "BTS in IT Services for Organisations (SIO)",
-        "place": "Work-study · CFA ITIS, Évry-Courcouronnes",
+        "date": "Upon signing",
+        "role": "IT work-study programme",
+        "place": "Bac+2 / Bac+3 level · starts when the contract is signed",
         "points": [
           "Curriculum: development (PHP, Python, Java, SQL), networking and systems (TCP/IP, DNS, DHCP, VPN, Linux), support and cybersecurity"
         ]
@@ -354,7 +339,7 @@
     "copied": "Copied!",
     "stickers": [
       "available!",
-      "BTS SIO",
+      "Bac+2 / Bac+3",
       "English C1"
     ],
     "footer": "Designed and built by Amir Chouchane · 2026",

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, type ReactNode } from 'react'
 import { ScrollRevealText } from '../components/ScrollRevealText'
 import { SectionTitle } from '../components/SectionTitle'
 import { SpotlightCard } from '../components/SpotlightCard'
-import { cefrScale, languages, rhythmWeeks } from '../data/about'
+import { cefrScale, languages } from '../data/about'
 import { useI18n } from '../i18n/I18nProvider'
 import { gsap, prefersReducedMotion } from '../lib/motion'
 
@@ -45,8 +45,7 @@ export function About() {
         className="mt-12 max-w-5xl font-display text-2xl leading-snug font-medium text-fg sm:text-4xl sm:leading-tight"
       />
 
-      <div className="mt-24 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <RhythmCard />
+      <div className="mt-24 grid gap-4 sm:grid-cols-2">
         <TrainingCard />
         <MobilityCard />
         <LanguagesCard />
@@ -57,53 +56,6 @@ export function About() {
 
 function CardLabel({ children }: { children: ReactNode }) {
   return <p className="font-mono text-xs tracking-wider text-accent uppercase">{children}</p>
-}
-
-function RhythmCard() {
-  const { t } = useI18n()
-  return (
-    <SpotlightCard data-card className="sm:col-span-2">
-      <CardLabel>{t('about.rhythm.label')}</CardLabel>
-      <p className="mt-4 font-display text-2xl font-semibold text-fg sm:text-3xl">{t('about.rhythm.title')}</p>
-      <p className="mt-1 text-sm text-muted">{t('about.rhythm.detail')}</p>
-
-      <div className="mt-8 grid grid-cols-[auto_repeat(5,minmax(0,1fr))] items-center gap-2 sm:gap-3">
-        <span />
-        {[0, 1, 2, 3, 4].map((d) => (
-          <span key={d} className={`text-center font-mono text-xs ${d === 2 ? 'text-fg' : 'text-muted'}`}>
-            {t(`about.rhythm.days.${d}`)}
-          </span>
-        ))}
-        {rhythmWeeks.map((week, w) => (
-          <Row key={w} label={`${t('about.rhythm.week')} ${w + 1}`}>
-            {week.map((kind, d) => (
-              <span
-                key={d}
-                data-cell
-                className={`grid h-11 place-items-center rounded-xl font-mono text-[11px] sm:h-12 sm:text-xs ${
-                  kind === 'company'
-                    ? 'bg-accent font-semibold text-bg shadow-[0_0_24px_-6px_var(--c-accent)]'
-                    : 'border border-accent-2/50 bg-accent-2/10 text-accent-2'
-                } ${d === 2 ? 'ring-2 ring-fg/25 ring-offset-2 ring-offset-surface' : ''}`}
-              >
-                <span className="hidden sm:inline">{t(`about.rhythm.${kind}`)}</span>
-                <span className="sm:hidden">{t(`about.rhythm.${kind}`).slice(0, 3)}.</span>
-              </span>
-            ))}
-          </Row>
-        ))}
-      </div>
-    </SpotlightCard>
-  )
-}
-
-function Row({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <>
-      <span className="pr-2 font-mono text-xs whitespace-nowrap text-muted">{label}</span>
-      {children}
-    </>
-  )
 }
 
 function TrainingCard() {

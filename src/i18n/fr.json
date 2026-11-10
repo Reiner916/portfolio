@@ -20,36 +20,21 @@
   "intro": {
     "hello": "Bonjour, je suis",
     "name": "Amir Chouchane",
-    "role": "Alternance · Support, réseau & développement web",
-    "status": "Recherche une alternance · rythme 2 j / 3 j",
+    "role": "Alternance informatique · Support, réseau & développement web",
+    "status": "Formation en alternance niveau Bac+2 / Bac+3 · Disponible immédiatement",
     "hintDown": "Fais défiler vers le bas pour entrer dans l'écran",
     "hintUp": "Ou remonte pour découvrir tout le bureau"
   },
   "about": {
     "eyebrow": "À propos",
     "title": "Bienvenue de l'autre côté de l'écran.",
-    "text": "Je m'appelle Amir. Passionné d'informatique, je me suis réorienté vers ce domaine après une première année de BTS commercial, et je suis aujourd'hui en BTS SIO au CFA ITIS d'Évry-Courcouronnes. Sur mon temps libre, je crée des sites en Next.js et React, et j'écris des scripts pour automatiser les tâches répétitives. J'aime tout autant le terrain : upgrader, installer, configurer et dépanner des postes. Et surtout, aider les autres, qu'il s'agisse d'utilisateurs ou de proches.",
+    "text": "Je m'appelle Amir. Passionné d'informatique, je me suis réorienté vers ce domaine après une première année de BTS commercial. Aujourd'hui, je cherche l'entreprise qui m'accueillera en alternance en informatique, en support, réseau ou développement web : la formation démarre dès la signature du contrat. Sur mon temps libre, je crée des sites en Next.js et React, et j'écris des scripts pour automatiser les tâches répétitives. J'aime tout autant le terrain : upgrader, installer, configurer et dépanner des postes. Et surtout, aider les autres, qu'il s'agisse d'utilisateurs ou de proches.",
     "status": "Disponible pour une alternance",
-    "rhythm": {
-      "label": "Rythme d'alternance",
-      "title": "3 jours en entreprise, 2 jours à l'école",
-      "detail": "Le mercredi alterne d'une semaine à l'autre.",
-      "week": "Semaine",
-      "days": [
-        "Lun",
-        "Mar",
-        "Mer",
-        "Jeu",
-        "Ven"
-      ],
-      "company": "Entreprise",
-      "school": "École"
-    },
     "training": {
       "label": "Formation",
-      "title": "BTS SIO",
-      "detail": "CFA ITIS, Évry-Courcouronnes",
-      "since": "2026 – 2028, en apprentissage"
+      "title": "Bac+2 / Bac+3",
+      "detail": "Formation en informatique en alternance",
+      "since": "Démarrage à la signature du contrat"
     },
     "mobility": {
       "label": "Mobilité",
@@ -71,7 +56,7 @@
     "groups": {
       "support": "Support & matériel",
       "dev": "Développement",
-      "learning": "En cours d'apprentissage · BTS SIO"
+      "learning": "Notions, approfondies en formation"
     },
     "levels": [
       "Découverte",
@@ -122,7 +107,7 @@
       }
     },
     "learning": {
-      "context": "1re année · tronc commun réseau et développement",
+      "context": "Réseau, développement et support",
       "tag": "En cours",
       "groups": [
         {
@@ -289,9 +274,9 @@
         ]
       },
       "bts": {
-        "date": "2026 – 2028",
-        "role": "BTS Services Informatiques aux Organisations",
-        "place": "En alternance · CFA ITIS, Évry-Courcouronnes",
+        "date": "Dès la signature",
+        "role": "Formation en informatique en alternance",
+        "place": "Niveau Bac+2 / Bac+3 · démarrage à la signature du contrat",
         "points": [
           "Au programme : développement (PHP, Python, Java, SQL), réseau et systèmes (TCP/IP, DNS, DHCP, VPN, Linux), support et cybersécurité"
         ]
@@ -354,7 +339,7 @@
     "copied": "Copié !",
     "stickers": [
       "dispo !",
-      "BTS SIO",
+      "Bac+2 / Bac+3",
       "anglais C1"
     ],
     "footer": "Conçu et développé par Amir Chouchane · 2026",

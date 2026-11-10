@@ -10,8 +10,8 @@
   <img src="https://img.shields.io/badge/GSAP-ScrollTrigger-7f969c?style=flat-square&logo=greensock&logoColor=white" alt="GSAP" />
 </p>
 
-> 👋 Le portfolio d'**Amir Chouchane**, étudiant en BTS SIO au CFA ITIS d'Évry-Courcouronnes.
-> Je cherche une **alternance en support, réseau et développement web** (2 jours à l'école, 3 jours en entreprise).
+> 👋 Le portfolio d'**Amir Chouchane**, étudiant en informatique.
+> Je cherche une **alternance en support, réseau et développement web** (niveau Bac+2 / Bac+3), disponible immédiatement.
 
 <p align="center"><b>🌐 <a href="https://amir-chouchane.vercel.app">amir-chouchane.vercel.app</a></b></p>
 

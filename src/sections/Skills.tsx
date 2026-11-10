@@ -76,7 +76,7 @@ export function Skills() {
         <div>
           <h3 className="font-display text-2xl font-semibold text-fg">{t('skills.groups.learning')}</h3>
           <p className="mt-2 mb-6 font-mono text-xs text-muted">{t('skills.learning.context')}</p>
-          {/* Programme du BTS SIO (3 blocs du référentiel), en 3 groupes */}
+          {/* Notions approfondies en formation, en 3 groupes */}
           <div data-learning-list className="grid gap-4 md:grid-cols-3">
             {[0, 1, 2].map((g) => {
               const base = `skills.learning.groups.${g}`
